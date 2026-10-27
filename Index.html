@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101714">
+<title>54TH & GOAL</title>
+<style>
+:root{--bg:#101714;--panel:#1b2821;--green:#35d399;--text:#f2f5f3;--muted:#aebbb4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif}
+main{max-width:520px;margin:auto;padding:24px 17px;min-height:100vh}
+header{text-align:center;padding:35px 0}
+h1{font-size:clamp(36px,10vw,54px);line-height:1;margin:0;font-weight:950;letter-spacing:-2px}
+h1 span,.green{color:var(--green)}
+header p{font-size:10px;letter-spacing:4px;color:var(--muted)}
+.hero,.card{background:var(--panel);border:1px solid #31483c;border-radius:16px;padding:20px;margin:12px 0}
+.kicker{color:var(--green);font-size:11px;letter-spacing:3px;font-weight:bold}
+h2{font-size:30px;line-height:1.1}
+p{line-height:1.5;color:var(--muted)}
+button,input,select{font:inherit}
+button{width:100%;padding:15px;border-radius:11px;border:1px solid #31483c;background:var(--panel);color:var(--text);font-weight:800;margin:5px 0;text-align:left}
+button.primary{background:var(--green);color:#082117;border-color:var(--green)}
+input,select{width:100%;padding:13px;margin:7px 0 15px;background:#0b110e;color:var(--text);border:1px solid #31483c;border-radius:9px}
+.screen{display:none}.screen.active{display:block}
+.statrow{display:flex;gap:8px}
+.stat{flex:1;background:var(--panel);padding:12px 5px;text-align:center;border-radius:10px;border:1px solid #31483c}
+.stat strong{display:block;color:var(--green);font-size:23px}
+.stat small{color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:10px;letter-spacing:2px;padding:30px 0}
+</style>
+</head>
+<body>
+<main>
+<section id="home" class="screen active">
+<header><h1>54TH <span>&amp; GOAL</span></h1><p>FRANCHISE MANAGEMENT</p></header>
+<div class="hero"><div class="kicker">YOUR MOMENT STARTS NOW</div><h2>BUILD YOUR FOOTBALL LEGACY.</h2><p>53 players. One coaching staff. One franchise. One person. You.</p></div>
+<button class="primary" onclick="show('intro')">START A NEW CAREER →</button>
+<button onclick="load()">LOAD CAREER →</button>
+<footer>YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</footer>
+</section>
+<section id="intro" class="screen">
+<button onclick="show('home')">← BACK</button><div class="kicker">THE OPENING STATEMENT</div>
+<div class="card"><h2>53 PLAYERS.</h2><p>One roster. Fifty-three different stories.</p></div>
+<div class="card"><h2>ONE COACHING STAFF.</h2><p>One game plan. One shared vision.</p></div>
+<div class="card"><h2>ONE FRANCHISE.</h2><p>A city. A legacy. A dream.</p></div>
+<div class="hero" style="text-align:center"><p>ONE PERSON.</p><h1 class="green">YOU.</h1><h2>THE 54TH.</h2></div>
+<button class="primary" onclick="show('create')">TAKE THE HELM →</button>
+</section>
+<section id="create" class="screen">
+<button onclick="show('intro')">← BACK</button><div class="kicker">CAREER SETUP</div><h2>Your franchise.<br>Your decisions.</h2>
+<label>General manager name</label><input id="gm" placeholder="Your name">
+<label>Choose your franchise</label><select id="team"><option>Portland Pines</option><option>Austin Outlaws</option><option>Brooklyn Kings</option><option>Orlando Storm</option><option>Chicago Forge</option><option>Las Vegas Vipers</option></select>
+<button class="primary" onclick="create()">CREATE FRANCHISE →</button>
+</section>
+<section id="dash" class="screen">
+<button onclick="show('home')">← MAIN MENU</button><div class="kicker">CAREER MODE · YEAR 1</div><h2 id="teamname">Your Franchise</h2><p id="manager">General Manager</p>
+<div class="statrow"><div class="stat"><strong id="record">0–0</strong><small>RECORD</small></div><div class="stat"><strong>53</strong><small>ROSTER</small></div><div class="stat"><strong>$24M</strong><small>CAP SPACE</small></div></div>
+<div class="card"><h3>FRONT OFFICE REPORT</h3><p>Your season starts here. Build your roster, make smart decisions and chase a championship.</p></div>
+<button class="primary" onclick="show('roster')">MANAGE ROSTER →</button>
+<button onclick="play()">PLAY NEXT WEEK ▶</button>
+<button onclick="show('office')">FRONT OFFICE →</button>
+</section>
+<section id="roster" class="screen">
+<button onclick="show('dash')">← BACK</button><h2>THE ROSTER</h2>
+<div class="card"><h3>Marcus Reed · QB</h3><p>Overall 84 · Field general · Age 27</p></div>
+<div class="card"><h3>Jalen Brooks · WR</h3><p>Overall 91 · Deep threat · Age 25</p></div>
+<div class="card"><h3>Caleb Stone · EDGE</h3><p>Overall 87 · Pass rusher · Age 28</p></div>
+<div class="card"><h3>Team needs</h3><p>Offensive line · Linebacker depth · Backup quarterback</p></div>
+</section>
+<section id="office" class="screen">
+<button onclick="show('dash')">← BACK</button><h2>FRONT OFFICE</h2>
+<div class="card"><h3>Owner's mandate</h3><p>Finish with a winning record and build a competitive roster without sacrificing the future.</p></div>
+<div class="card"><h3>Season objective</h3><p>Reach the playoffs. Develop young talent. Build your legacy.</p></div>
+</section>
+</main>
+<script>
+let save=null;try{save=JSON.parse(localStorage.getItem('f54')||'null')}catch(e){}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function create(){save={gm:document.getElementById('gm').value||'The 54th',team:document.getElementById('team').value,w:0,l:0};store();render();show('dash')}
+function store(){try{localStorage.setItem('f54',JSON.stringify(save))}catch(e){}}
+function render(){if(!save)return;document.getElementById('teamname').textContent=save.team;document.getElementById('manager').textContent='General Manager: '+save.gm;document.getElementById('record').textContent=save.w+'–'+save.l}
+function load(){if(!save){alert('No saved career yet. Start a new career first.');return}render();show('dash')}
+function play(){if(!save)return;if(Math.random()<.56)save.w++;else save.l++;store();render();alert(save.w>save.l?'Victory! Your team takes the W.':'Tough loss. Regroup for next week.')}
+if(save)render();
+</script>
+</body>
+</html>
