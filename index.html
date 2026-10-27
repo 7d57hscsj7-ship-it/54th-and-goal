@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B0F0D">
-<title>54TH &amp; GOAL</title>
+<title>54TH &amp; GOAL — v0.7</title>
 <style>
-:root{--bg:#0B0F0D;--panel:#131A16;--green:#244936;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830;--gold:#C4AE76}
+:root{--bg:#0B0F0D;--panel:#131A16;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830;--green:#244936;--gold:#C4AE76}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 50% -20%,#20372b,transparent 50%),var(--bg);color:var(--white);font-family:system-ui,-apple-system,sans-serif}
 button,input,select{font:inherit}button{color:inherit;cursor:pointer}
@@ -15,9 +15,11 @@ button,input,select{font:inherit}button{color:inherit;cursor:pointer}
 .screen{display:none;min-height:94svh;animation:fade .25s}.screen.active{display:flex;flex-direction:column}
 @keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
 .topline{display:flex;align-items:center;justify-content:space-between;padding:19px 0 14px}
-.wordmark{font-size:10px;letter-spacing:.22em;color:var(--silver)}.eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--silver);font-weight:800}
+.wordmark{font-size:10px;letter-spacing:.22em;color:var(--silver)}
+.eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--silver);font-weight:800}
 .back{background:none;border:0;color:var(--silver);font-size:10px;padding:9px 0}
-h1,h2,h3,p{margin-top:0}h1{font-size:clamp(34px,9vw,54px);line-height:.97;letter-spacing:-.055em;margin:16px 0}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(34px,9vw,54px);line-height:.97;letter-spacing:-.055em;margin:16px 0}
 h2{font-size:32px;line-height:1;letter-spacing:-.045em;margin:16px 0}
 h3{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
 p{font-size:12px;line-height:1.65;color:#aeb9b1}
@@ -33,17 +35,33 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 .stat{background:#141c16;border:1px solid var(--line);padding:12px 8px}
 .stat strong{display:block;font-size:23px;color:var(--silver)}.stat small{font-size:8px;letter-spacing:.1em;color:var(--muted)}
 .item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}
-.item:last-child{border-bottom:0}.muted{color:var(--muted);font-size:10px}.rating{font-size:17px;font-weight:900;color:var(--silver)}
+.item:last-child{border-bottom:0}
+.muted{color:var(--muted);font-size:10px}.rating{font-size:17px;font-weight:900;color:var(--silver)}
 .pill{display:inline-block;border:1px solid var(--line);padding:5px 7px;font-size:9px;color:var(--silver);letter-spacing:.08em}
 .matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;text-align:center;align-items:center;margin:15px 0}
 .matchup strong{font-size:12px}.matchup small{display:block;color:var(--muted);font-size:9px;margin-top:5px}
 .bigscore{text-align:center;font-size:46px;font-weight:950;letter-spacing:-.06em;margin:18px 0}
-.event{font-size:11px;line-height:1.6;padding:10px 0;border-bottom:1px solid var(--line);color:#c3ccc5}.event:last-child{border:0}
+.event{font-size:11px;line-height:1.6;padding:10px 0;border-bottom:1px solid var(--line);color:#c3ccc5}
+.event:last-child{border:0}
 .bar{height:5px;background:#29342c;margin-top:7px}.bar span{display:block;height:100%;background:#76927d}
 .foot{text-align:center;margin-top:auto;padding:24px 0 10px;color:#7f8b83;font-size:9px;letter-spacing:.17em}
 .logo{width:60px;height:60px;border:1px solid #65786b;transform:rotate(45deg);display:grid;place-items:center;margin:8px auto 25px}
 .logo span{transform:rotate(-45deg);font-weight:950;color:var(--silver)}
 .notice{border-left:2px solid var(--gold);padding:9px 12px;color:#d7cba9;font-size:11px;line-height:1.6}
+.position-heading{margin:20px 0 5px;padding:9px 0;border-bottom:1px solid #536458;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:850;letter-spacing:.14em;color:var(--silver)}
+.player-card{padding:12px 0;border-bottom:1px solid var(--line)}
+.player-main{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.player-info{min-width:0;flex:1}.player-name{font-size:12px;font-weight:750}.player-meta{font-size:10px;color:var(--muted);margin-top:4px}
+.player-action{border:1px solid var(--line);background:#18221b;padding:8px 10px;font-size:9px;font-weight:800;letter-spacing:.08em;white-space:nowrap}
+.status{font-size:8px;letter-spacing:.1em;color:var(--silver);margin-top:4px}
+#swapModal{position:fixed;inset:0;background:#050806ed;z-index:20;display:none;align-items:flex-end;justify-content:center;padding:12px}
+#swapModal.open{display:flex}
+.modal-sheet{width:100%;max-width:600px;max-height:82svh;overflow:auto;background:#121a15;border:1px solid #405447;padding:18px}
+.modal-player{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
+.modal-player button{border:1px solid #526858;background:#203a2a;padding:9px 12px;font-size:9px;font-weight:800}
+.match-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.match-actions .btn{margin:0}
+.drive-label{font-size:9px;letter-spacing:.12em;color:var(--silver);padding:12px 0 3px;border-bottom:1px solid var(--line)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
@@ -51,7 +69,7 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 <main id="app">
 
 <section id="home" class="screen active">
- <div class="topline"><span class="wordmark">FRONT OFFICE SIMULATION</span><span class="eyebrow">V0.6</span></div>
+ <div class="topline"><span class="wordmark">FRONT OFFICE SIMULATION</span><span class="eyebrow">V0.7</span></div>
  <div class="hero">
   <div class="logo"><span>54TH</span></div>
   <div class="eyebrow">YOUR FRANCHISE. YOUR CALL.</div>
@@ -73,7 +91,7 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
   <select class="field" id="teamChoice"></select>
   <button class="btn primary" type="submit">CREATE FRANCHISE <span>↗</span></button>
  </form>
- <div class="notice">Starting a new career replaces the saved career on this device.</div>
+ <div class="notice">Starting a new career replaces the saved v0.7 career on this device.</div>
 </section>
 
 <section id="dash" class="screen">
@@ -95,6 +113,10 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 
 <section id="game" class="screen">
  <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span id="gameWeek" class="eyebrow">WEEK 1</span></div>
+ <div class="match-actions">
+  <button class="btn primary" onclick="show('dash')">CONTINUE →</button>
+  <button class="btn" onclick="toggleStory()">SHOW / HIDE LOG</button>
+ </div>
  <div class="eyebrow">FINAL SCORE</div>
  <div class="panel">
   <div class="matchup"><div><strong id="homeName">HOME</strong><small>HOME</small></div><span class="muted">VS</span><div><strong id="awayName">AWAY</strong><small>AWAY</small></div></div>
@@ -105,8 +127,8 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
   <div class="stat"><strong id="userTO">0</strong><small>YOUR TURNOVERS</small></div>
   <div class="stat"><strong id="mvpRating">—</strong><small>MVP RATING</small></div>
  </div>
- <div class="panel"><h3>Game Story</h3><div id="story"></div></div>
- <button class="btn primary" onclick="show('dash')">RETURN TO FRONT OFFICE <span>→</span></button>
+ <div id="storyPanel" class="panel"><h3>Play-by-Play</h3><div id="story"></div></div>
+ <button class="btn primary" onclick="show('dash')">CONTINUE TO FRONT OFFICE <span>→</span></button>
 </section>
 
 <section id="schedule" class="screen">
@@ -121,14 +143,15 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 
 <section id="roster" class="screen">
  <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">PERSONNEL</span></div>
- <h2>Your Roster</h2><p>Players have individual ratings, age, potential and contract value. Injuries can temporarily remove a player from the lineup.</p>
+ <h2>Your Roster</h2>
+ <p>Players are grouped by position. Select CHANGE on a starter to choose an eligible replacement at the same position.</p>
  <div id="rosterSummary" class="stats"></div>
  <div id="rosterList" class="panel"></div>
 </section>
 
 <section id="tactics" class="screen">
  <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">GAME PLAN</span></div>
- <h2>Set Your Identity</h2><p>Your choices affect how your offense and defense perform in each simulated game.</p>
+ <h2>Set Your Identity</h2><p>Your choices influence how your offense and defense perform in simulated games.</p>
  <div class="panel"><h3>Offensive Philosophy</h3><div id="offChoices"></div></div>
  <div class="panel"><h3>Defensive Philosophy</h3><div id="defChoices"></div></div>
  <button class="btn primary" onclick="saveTactics()">SAVE GAME PLAN <span>↗</span></button>
@@ -136,8 +159,7 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 
 <section id="finance" class="screen">
  <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">FRONT OFFICE</span></div>
- <h2>Franchise Finances</h2><div id="financeSummary" class="stats"></div>
- <div class="panel"><h3>Management Notes</h3><div id="financeNotes"></div></div>
+ <h2>Franchise Finances</h2><div id="financeSummary" class="stats"></div><div class="panel"><h3>Management Notes</h3><div id="financeNotes"></div></div>
 </section>
 
 <section id="office" class="screen">
@@ -146,6 +168,15 @@ p{font-size:12px;line-height:1.65;color:#aeb9b1}
 </section>
 
 </main>
+
+<div id="swapModal" onclick="if(event.target===this)closeSwap()">
+ <div class="modal-sheet">
+  <div class="topline"><div><div class="eyebrow">DEPTH CHART</div><h2 id="swapTitle" style="font-size:25px;margin:9px 0">Replace Starter</h2></div><button class="back" onclick="closeSwap()">CLOSE ✕</button></div>
+  <p id="swapDescription">Choose a replacement for this position.</p>
+  <div id="swapOptions"></div>
+ </div>
+</div>
+
 <script>
 const TEAMS=[
  {name:"Portland Pines",off:82,def:79,qb:84,run:80,pass:84,ol:81,passD:80,runD:78},
@@ -160,21 +191,23 @@ const TEAMS=[
 const FIRST=["Alex","Jordan","Marcus","Darius","Ethan","Noah","Cameron","Miles","Logan","Tyler","Jalen","Riley","Caleb","Devin","Andre","Isaiah","Cole","Mason","Trey","Jamal","Ryan","Dylan","Blake","Jace"];
 const LAST=["Carter","Brooks","Hayes","Mitchell","Reed","Bennett","Walker","Turner","Foster","Morgan","Price","Collins","Parker","James","Cooper","Ward","Young","Harris","Morris","Perry","Bell","Gray","Ross","Powell"];
 const POSITIONS=[
- {p:"QB",w:2},{p:"RB",w:2},{p:"WR",w:3},{p:"TE",w:1},{p:"OL",w:3},
- {p:"DL",w:2},{p:"LB",w:2},{p:"CB",w:2},{p:"S",w:1},{p:"K",w:1}
+ {p:"QB",count:2},{p:"RB",count:2},{p:"WR",count:3},{p:"TE",count:1},{p:"OL",count:3},
+ {p:"DL",count:2},{p:"LB",count:2},{p:"CB",count:2},{p:"S",count:1},{p:"K",count:1}
 ];
 const OFF_TACTICS={
- Balanced:{label:"Balanced",desc:"A flexible mix of passing and rushing.",pass:0,run:0,wear:0},
- "Pass Heavy":{label:"Pass Heavy",desc:"More passing opportunities; quarterback and pass protection matter more.",pass:5,run:-3,wear:1},
- "Ground Control":{label:"Ground Control",desc:"More rushing and ball security; the offensive line matters more.",pass:-3,run:5,wear:-1}
+ Balanced:{label:"Balanced",desc:"A flexible mix of passing and rushing.",pass:0,run:0},
+ "Pass Heavy":{label:"Pass Heavy",desc:"More passing; quarterback and protection matter more.",pass:5,run:-3},
+ "Ground Control":{label:"Ground Control",desc:"More rushing and ball security.",pass:-3,run:5}
 };
 const DEF_TACTICS={
- Balanced:{label:"Balanced",desc:"No major weakness or specialization.",pass:0,run:0,risk:0},
- "Stop the Pass":{label:"Stop the Pass",desc:"Better against passing attacks, but more vulnerable to rushing.",pass:5,run:-3,risk:0},
- "Pressure & Blitz":{label:"Pressure & Blitz",desc:"More chances to disrupt the QB, with extra risk of explosive plays.",pass:3,run:0,risk:3}
+ Balanced:{label:"Balanced",desc:"No major weakness or specialization.",pass:0,run:0},
+ "Stop the Pass":{label:"Stop the Pass",desc:"Better against passing attacks, weaker against the run.",pass:5,run:-3},
+ "Pressure & Blitz":{label:"Pressure & Blitz",desc:"More disruption, with extra risk.",pass:3,run:0}
 };
 let career=null;
-try{career=JSON.parse(localStorage.getItem("f54v06")||"null")}catch(e){career=null}
+let swapStarterId=null;
+
+try{career=JSON.parse(localStorage.getItem("f54v07")||"null")}catch(e){career=null}
 document.getElementById("teamChoice").innerHTML=TEAMS.map(t=>`<option>${t.name}</option>`).join("");
 
 function show(id){
@@ -186,42 +219,44 @@ function rand(a,b){return Math.random()*(b-a)+a}
 function irand(a,b){return Math.floor(rand(a,b+1))}
 function clamp(n,a,b){return Math.max(a,Math.min(b,n))}
 function pick(a){return a[irand(0,a.length-1)]}
-function save(){try{localStorage.setItem("f54v06",JSON.stringify(career))}catch(e){}}
-function makeRoster(){
- return Array.from({length:19},(_,i)=>{
-  const role=POSITIONS[i%POSITIONS.length].p;
-  const rating=irand(62,91);
-  return{
-   id:i+1,name:pick(FIRST)+" "+pick(LAST),pos:role,rating,
-   age:irand(21,32),potential:clamp(rating+irand(0,17),rating,99),
-   salary:Math.round((rating-50)*0.19*10)/10,
-   injured:0,starter:false
-  };
- });
-}
-function newCareer(e){
- e.preventDefault();
- const name=document.getElementById("teamChoice").value;
- const base=TEAMS.find(t=>t.name===name);
- career={
-  version:6,gm:document.getElementById("gm").value.trim(),team:name,
-  week:1,results:[],tactics:{off:"Balanced",def:"Balanced"},
-  cash:85,salaryCap:100,roster:makeRoster(),
-  teams:TEAMS.map(t=>({...t,w:0,l:0,pf:0,pa:0})),
-  schedule:shuffle(TEAMS.filter(t=>t.name!==name).map(t=>t.name))
-    .map((opponent,i)=>({week:i+1,opponent,home:i%2===0}))
- };
- career.roster.forEach((p,i)=>p.starter=i<11);
- save();renderDash();show("dash");
-}
 function shuffle(a){
  a=[...a];
  for(let i=a.length-1;i>0;i--){let j=irand(0,i);[a[i],a[j]]=[a[j],a[i]]}
  return a;
 }
+function save(){try{localStorage.setItem("f54v07",JSON.stringify(career))}catch(e){}}
+function makeRoster(){
+ const roster=[];
+ let id=1;
+ for(const group of POSITIONS){
+  for(let i=0;i<group.count+1;i++){
+   const rating=irand(64,91);
+   roster.push({
+    id:id++,name:pick(FIRST)+" "+pick(LAST),pos:group.p,rating,
+    age:irand(21,32),potential:clamp(rating+irand(0,17),rating,99),
+    salary:Math.round((rating-50)*.19*10)/10,
+    injured:0,starter:i<group.count
+   });
+  }
+ }
+ return roster;
+}
+function newCareer(e){
+ e.preventDefault();
+ const name=document.getElementById("teamChoice").value;
+ career={
+  version:7,gm:document.getElementById("gm").value.trim(),team:name,
+  week:1,results:[],tactics:{off:"Balanced",def:"Balanced"},
+  cash:85,salaryCap:100,roster:makeRoster(),
+  teams:TEAMS.map(t=>({...t,w:0,l:0,pf:0,pa:0})),
+  schedule:shuffle(TEAMS.filter(t=>t.name!==name).map(t=>t.name))
+   .map((opponent,i)=>({week:i+1,opponent,home:i%2===0}))
+ };
+ save();renderDash();show("dash");
+}
 function loadCareer(){
- if(!career||career.version!==6){
-  alert("No compatible v0.6 career found. Start a new career to use the new management features.");
+ if(!career||career.version!==7){
+  alert("No compatible v0.7 career found. Start a new career to use the updated roster system.");
   return;
  }
  renderDash();show("dash");
@@ -231,13 +266,12 @@ function ranked(){return [...career.teams].sort((a,b)=>b.w-a.w||(b.pf-b.pa)-(a.p
 function activePlayers(){return career.roster.filter(p=>p.injured===0)}
 function averageRating(list){return list.length?list.reduce((s,p)=>s+p.rating,0)/list.length:65}
 function rosterRatings(){
- const available=activePlayers();
- const group=pos=>available.filter(p=>p.pos===pos);
- const q=group("QB"),r=group("RB"),wr=group("WR"),ol=group("OL"),dl=group("DL"),lb=group("LB"),cb=group("CB"),s=group("S");
+ const a=activePlayers(),group=pos=>a.filter(p=>p.pos===pos);
  return{
-  qb:averageRating(q),run:averageRating([...r,...ol]),pass:averageRating([...q,...wr]),
-  ol:averageRating(ol),passD:averageRating([...dl,...lb,...cb,...s]),
-  runD:averageRating([...dl,...lb]),count:available.length
+  qb:averageRating(group("QB")),run:averageRating([...group("RB"),...group("OL")]),
+  pass:averageRating([...group("QB"),...group("WR")]),ol:averageRating(group("OL")),
+  passD:averageRating([...group("DL"),...group("LB"),...group("CB"),...group("S")]),
+  runD:averageRating([...group("DL"),...group("LB")])
  };
 }
 function renderDash(){
@@ -258,61 +292,108 @@ function renderDash(){
  renderReport();
 }
 function renderReport(){
- const wins=career.results.filter(r=>r.won).length;
- const losses=career.results.length-wins;
- const t=getTeam(career.team);
+ const wins=career.results.filter(r=>r.won).length,loss=career.results.length-wins,t=getTeam(career.team);
  document.getElementById("report").innerHTML=
  `<h3>Season Report</h3>
- <div class="item"><span>Record</span><strong>${wins}–${losses}</strong></div>
+ <div class="item"><span>Record</span><strong>${wins}–${loss}</strong></div>
  <div class="item"><span>League rank</span><strong>#${ranked().findIndex(x=>x.name===career.team)+1}</strong></div>
  <div class="item"><span>Points scored</span><strong>${t.pf}</strong></div>
  <div class="item"><span>Points allowed</span><strong>${t.pa}</strong></div>
  <div class="item"><span>Point differential</span><strong>${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</strong></div>
- <p>${career.results.length===7?"The regular season is complete.":"There are "+(7-career.results.length)+" regular-season games remaining."}</p>`;
+ <p>${career.results.length===7?"The regular season is complete.":(7-career.results.length)+" regular-season games remaining."}</p>`;
 }
-function showSchedule(){
- document.getElementById("scheduleList").innerHTML=career.schedule.map((g,i)=>{
-  const r=career.results[i];
-  return `<div class="item"><div><div class="muted">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}</strong></div><div>${r?`<strong class="rating">${g.home?r.scoreFor:r.scoreAgainst}–${g.home?r.scoreAgainst:r.scoreFor}</strong><div class="muted">${r.won?"WIN":"LOSS"}</div>`:"<span class='muted'>UPCOMING</span>"}</div></div>`;
- }).join("");
- show("schedule");
-}
-function showStandings(){
- document.getElementById("standingsList").innerHTML=
- '<div class="item muted"><span>FRANCHISE</span><span>W-L · DIFF</span></div>'+
- ranked().map((t,i)=>`<div class="item"><strong>${i+1}. ${t.name}${t.name===career.team?" ★":""}</strong><span>${t.w}-${t.l} · ${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</span></div>`).join("");
- show("standings");
-}
+
+/* ROSTER: position-first grouping and real replacement selection */
 function showRoster(){
- const a=activePlayers(),injured=career.roster.filter(p=>p.injured>0);
+ const available=activePlayers(),injured=career.roster.filter(p=>p.injured>0);
  document.getElementById("rosterSummary").innerHTML=
  `<div class="stat"><strong>${career.roster.length}</strong><small>PLAYERS</small></div>
- <div class="stat"><strong>${a.length}</strong><small>AVAILABLE</small></div>
+ <div class="stat"><strong>${available.length}</strong><small>AVAILABLE</small></div>
  <div class="stat"><strong>${injured.length}</strong><small>INJURED</small></div>`;
- document.getElementById("rosterList").innerHTML=career.roster.map(p=>
- `<div class="item"><div style="flex:1"><strong>${p.name}</strong><div class="muted">${p.pos} · Age ${p.age} · Potential ${p.potential}${p.injured?` · OUT ${p.injured} WK`:""}</div><div class="bar"><span style="width:${p.rating}%"></span></div></div><div style="text-align:right"><strong class="rating">${p.rating}</strong><button class="btn" style="width:auto;padding:7px;margin-top:5px" onclick="toggleStarter(${p.id})">${p.starter?"STARTER":"BENCH"}</button></div></div>`
- ).join("");
+ const list=document.getElementById("rosterList");
+ list.innerHTML="";
+ for(const group of POSITIONS){
+  const players=career.roster.filter(p=>p.pos===group.p).sort((a,b)=>{
+   if(a.starter!==b.starter)return a.starter?-1:1;
+   if((a.injured>0)!==(b.injured>0))return a.injured>0?1:-1;
+   return b.rating-a.rating;
+  });
+  const heading=document.createElement("div");
+  heading.className="position-heading";
+  heading.innerHTML=`<span>${group.p}</span><span>${players.filter(p=>p.starter&&!p.injured).length} STARTER · ${players.length} PLAYERS</span>`;
+  list.appendChild(heading);
+  for(const p of players){
+   const card=document.createElement("div");
+   card.className="player-card";
+   const status=p.injured>0?`INJURED · ${p.injured} WEEK(S) OUT`:p.starter?"STARTER":"BENCH";
+   const action=p.starter?"CHANGE":p.injured?"UNAVAILABLE":"PROMOTE";
+   card.innerHTML=`<div class="player-main">
+    <div class="player-info">
+     <div class="player-name">${p.name}</div>
+     <div class="player-meta">${p.pos} · AGE ${p.age} · POT ${p.potential} · $${p.salary.toFixed(1)}M</div>
+     <div class="bar"><span style="width:${p.rating}%"></span></div>
+     <div class="status">${status}</div>
+    </div>
+    <div style="text-align:right;min-width:55px"><div class="rating">${p.rating}</div><button class="player-action" ${p.injured?"disabled":""} onclick="openSwap(${p.id})">${action}</button></div>
+   </div>`;
+   list.appendChild(card);
+  }
+ }
  show("roster");
 }
-function toggleStarter(id){
- const p=career.roster.find(x=>x.id===id);
- if(!p)return;
- if(p.injured){alert("This player is injured and cannot start.");return}
- p.starter=!p.starter;save();showRoster();
+function openSwap(id){
+ const player=career.roster.find(p=>p.id===id);
+ if(!player||player.injured)return;
+ swapStarterId=id;
+ const isStarter=player.starter;
+ document.getElementById("swapTitle").textContent=isStarter?"Replace "+player.pos+" Starter":"Promote "+player.pos;
+ document.getElementById("swapDescription").textContent=isStarter
+  ?`Choose which available ${player.pos} player should take ${player.name}'s starting spot.`
+  :`Choose the current starter to replace with ${player.name}.`;
+ const options=career.roster
+  .filter(p=>p.pos===player.pos&&p.id!==player.id&&p.injured===0)
+  .sort((a,b)=>b.rating-a.rating);
+ const box=document.getElementById("swapOptions");
+ box.innerHTML="";
+ if(!options.length){
+  box.innerHTML='<p>No eligible replacement is available at this position.</p>';
+ }else{
+  for(const option of options){
+   const row=document.createElement("div");
+   row.className="modal-player";
+   row.innerHTML=`<div><strong>${option.name}</strong><div class="muted">${option.pos} · ${option.starter?"STARTER":"BENCH"} · AGE ${option.age}</div></div><div style="text-align:right"><strong class="rating">${option.rating}</strong><br><button onclick="confirmSwap(${option.id})">${isStarter&&option.starter?"SELECT":"SWAP"}</button></div>`;
+   box.appendChild(row);
+  }
+ }
+ document.getElementById("swapModal").classList.add("open");
 }
+function closeSwap(){
+ document.getElementById("swapModal").classList.remove("open");
+ swapStarterId=null;
+}
+function confirmSwap(otherId){
+ const player=career.roster.find(p=>p.id===swapStarterId);
+ const other=career.roster.find(p=>p.id===otherId);
+ if(!player||!other||player.pos!==other.pos||player.injured||other.injured)return;
+ // Swap the starting role; do not simply toggle the selected player's status.
+ const wasStarter=player.starter;
+ player.starter=other.starter;
+ other.starter=wasStarter;
+ save();closeSwap();showRoster();
+}
+
+/* TACTICS */
 function showTactics(){
  document.getElementById("offChoices").innerHTML=Object.values(OFF_TACTICS).map(t=>
- `<button class="btn ${career.tactics.off===t.label?"primary":""}" onclick="chooseTactic('off','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.off===t.label?"✓":"+"}</span></button>`
- ).join("");
+ `<button class="btn ${career.tactics.off===t.label?"primary":""}" onclick="chooseTactic('off','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.off===t.label?"✓":"+"}</span></button>`).join("");
  document.getElementById("defChoices").innerHTML=Object.values(DEF_TACTICS).map(t=>
- `<button class="btn ${career.tactics.def===t.label?"primary":""}" onclick="chooseTactic('def','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.def===t.label?"✓":"+"}</span></button>`
- ).join("");
+ `<button class="btn ${career.tactics.def===t.label?"primary":""}" onclick="chooseTactic('def','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.def===t.label?"✓":"+"}</span></button>`).join("");
  show("tactics");
 }
-function chooseTactic(side,name){
- career.tactics[side]=name;showTactics();
-}
+function chooseTactic(side,name){career.tactics[side]=name;showTactics()}
 function saveTactics(){save();alert("Game plan saved.");show("dash")}
+
+/* FINANCES */
 function showFinance(){
  const payroll=career.roster.reduce((s,p)=>s+p.salary,0);
  document.getElementById("financeSummary").innerHTML=
@@ -321,96 +402,92 @@ function showFinance(){
  <div class="stat"><strong>${Math.max(0,career.salaryCap-payroll).toFixed(1)}M</strong><small>CAP SPACE</small></div>`;
  document.getElementById("financeNotes").innerHTML=
  `<div class="item"><span>Weekly operating income</span><strong>$3.0M</strong></div>
- <div class="item"><span>Weekly payroll cost</span><strong>$${(payroll/18).toFixed(2)}M</strong></div>
+ <div class="item"><span>Weekly payroll estimate</span><strong>$${(payroll/18).toFixed(2)}M</strong></div>
  <div class="item"><span>Cap status</span><strong>${payroll>career.salaryCap?"OVER CAP":"UNDER CAP"}</strong></div>
- <p>Finances are a prototype system. Contract negotiations and player trading will be added in a later version.</p>`;
+ <p>Contracts and trades will be developed further in a future version.</p>`;
  show("finance");
 }
+
+/* MATCH SIMULATION: possessions and events are generated in chronological order */
 function clampRating(x){return Math.round(clamp(x,50,99))}
-function offenseDrive(att,def,story,label,tactics){
- let pos=25,plays=0,downs=0,yards=0;
- while(plays<8&&pos<100){
-  plays++;
-  const pass=Math.random()<tactics.passRate;
-  const unit=pass?(att.pass+att.qb+att.ol)/3:(att.run+att.ol)/2;
-  const stop=pass?def.passD:def.runD;
-  const edge=unit-stop;
-  const sack=pass&&Math.random()<clamp(.065-edge*.001,.02,.13);
-  if(Math.random()<clamp(.025-edge*.0007,.006,.065)){
-   story.push(`${label}: turnover after defensive pressure.`);
-   return{points:0,turnover:true,yards};
-  }
-  if(sack){
-   const loss=irand(3,9);pos=Math.max(1,pos-loss);yards-=loss;downs++;
-   story.push(`${label}: the defense records a ${loss}-yard sack.`);
-   if(downs>=4)break;
-   continue;
-  }
-  let gain;
-  if(pass){
-   const complete=Math.random()<clamp(.62+edge*.006,.4,.84);
-   gain=complete?irand(3,13)+Math.round(edge*.1):0;
-   if(!complete)story.push(`${label}: an incomplete pass stops the drive.`);
-  }else{
-   gain=irand(-2,8)+Math.round(edge*.12);
-  }
-  pos+=gain;yards+=gain;
-  if(pos>=100){pos=100;break}
-  if(gain>=10)downs=0;else downs++;
-  if(downs>=4)break;
-  if(pos<1)pos=1;
- }
- if(pos>=100){
-  story.push(`${label}: TOUCHDOWN after a ${Math.max(1,yards)}-yard drive.`);
-  return{points:7,turnover:false,yards,td:true};
- }
- if(pos>=68){
-  if(Math.random()<.76){
-   story.push(`${label}: field goal is GOOD.`);
-   return{points:3,turnover:false,yards,fg:true};
-  }
-  story.push(`${label}: field goal attempt misses.`);
-  return{points:0,turnover:false,yards};
- }
- if(Math.random()<.09){
-  story.push(`${label}: a long field goal is GOOD.`);
-  return{points:3,turnover:false,yards,fg:true};
- }
- story.push(`${label}: the drive stalls and ends in a punt.`);
- return{points:0,turnover:false,yards};
-}
 function teamStrengths(name,isUser){
  const base=career.teams.find(t=>t.name===name);
- if(!isUser)return{...base};
+ if(!isUser)return {...base};
  const r=rosterRatings(),ot=OFF_TACTICS[career.tactics.off],dt=DEF_TACTICS[career.tactics.def];
- return{
+ const starters=career.roster.filter(p=>p.starter&&!p.injured);
+ const starterFactor=starters.length/Math.max(1,career.roster.filter(p=>p.starter).length);
+ return {
   ...base,
   qb:clampRating((base.qb+r.qb)/2),
   pass:clampRating((base.pass+r.pass)/2+ot.pass),
   run:clampRating((base.run+r.run)/2+ot.run),
   ol:clampRating((base.ol+r.ol)/2),
   passD:clampRating((base.passD+r.passD)/2+dt.pass),
-  runD:clampRating((base.runD+r.runD)/2+dt.run)
+  runD:clampRating((base.runD+r.runD)/2+dt.run),
+  starterFactor
  };
 }
-function simulateTeamGame(att,def,story,label,isUser){
- const tactics=isUser?OFF_TACTICS[career.tactics.off]:OFF_TACTICS.Balanced;
- const defTactics=isUser?DEF_TACTICS[career.tactics.def]:DEF_TACTICS.Balanced;
- const tunedAtt={...att,pass:att.pass+tactics.pass,run:att.run+tactics.run};
- const tunedDef={...def,passD:def.passD+defTactics.pass,runD:def.runD+defTactics.run};
- const passRate=tactics.label==="Pass Heavy"?.72:tactics.label==="Ground Control"?.42:.58;
- let points=0,totalYards=0,turnovers=0,td=0,fg=0;
- for(let i=0;i<10;i++){
-  const d=offenseDrive(tunedAtt,tunedDef,story,label,{passRate});
-  points+=d.points;totalYards+=d.yards;
-  if(d.turnover)turnovers++;
-  if(d.td)td++;
-  if(d.fg)fg++;
+function makeDrive(att,def,label,passRate){
+ const events=[];
+ let pos=25,plays=0,downs=0,yards=0;
+ while(plays<8&&pos<100){
+  plays++;
+  const isPass=Math.random()<passRate;
+  const unit=isPass?(att.pass+att.qb+att.ol)/3:(att.run+att.ol)/2;
+  const stop=isPass?def.passD:def.runD;
+  const edge=unit-stop;
+  const turnover=Math.random()<clamp(.025-edge*.0007,.006,.065);
+  if(turnover){
+   events.push(`${label}: turnover after defensive pressure.`);
+   return{points:0,yards,turnover:true,events};
+  }
+  if(isPass&&Math.random()<clamp(.065-edge*.001,.02,.13)){
+   const loss=irand(3,9);
+   pos=Math.max(1,pos-loss);yards-=loss;downs++;
+   events.push(`${label}: sack for a ${loss}-yard loss.`);
+   if(downs>=4)break;
+   continue;
+  }
+  let gain;
+  if(isPass){
+   const complete=Math.random()<clamp(.62+edge*.006,.4,.84);
+   gain=complete?irand(3,13)+Math.round(edge*.1):0;
+   if(!complete)events.push(`${label}: incomplete pass.`);
+  }else{
+   gain=irand(-2,8)+Math.round(edge*.12);
+  }
+  pos+=gain;yards+=gain;
+  if(pos>=100){
+   events.push(`${label}: TOUCHDOWN after a ${Math.max(1,yards)}-yard drive.`);
+   return{points:7,yards,turnover:false,td:true,events};
+  }
+  if(gain>=10)downs=0;else downs++;
+  if(pos<1)pos=1;
+  if(downs>=4)break;
  }
- return{points,totalYards,turnovers,td,fg};
+ if(pos>=68){
+  if(Math.random()<.76){
+   events.push(`${label}: field goal is GOOD.`);
+   return{points:3,yards,turnover:false,fg:true,events};
+  }
+  events.push(`${label}: field goal attempt misses.`);
+  return{points:0,yards,turnover:false,events};
+ }
+ if(Math.random()<.09){
+  events.push(`${label}: long field goal is GOOD.`);
+  return{points:3,yards,turnover:false,fg:true,events};
+ }
+ events.push(`${label}: drive stalls and ends in a punt.`);
+ return{points:0,yards,turnover:false,events};
+}
+function getPassRate(isUser){
+ if(!isUser)return .58;
+ if(career.tactics.off==="Pass Heavy")return .72;
+ if(career.tactics.off==="Ground Control")return .42;
+ return .58;
 }
 function maybeInjury(){
- if(Math.random()>.18)return null;
+ if(Math.random()>.16)return null;
  const starters=career.roster.filter(p=>p.starter&&!p.injured);
  if(!starters.length)return null;
  const p=pick(starters);
@@ -423,57 +500,93 @@ function playGame(){
  const g=career.schedule[career.results.length];
  const userBase=getTeam(career.team),oppBase=getTeam(g.opponent);
  const userTeam=teamStrengths(career.team,true),oppTeam=teamStrengths(g.opponent,false);
- const story=[];
- let user,opp;
- if(g.home){
-  user=simulateTeamGame(userTeam,oppTeam,story,"Your offense",true);
-  opp=simulateTeamGame(oppTeam,userTeam,story,"Opponent offense",false);
- }else{
-  opp=simulateTeamGame(oppTeam,userTeam,story,"Opponent offense",false);
-  user=simulateTeamGame(userTeam,oppTeam,story,"Your offense",true);
+ const timeline=[];
+ let user={points:0,yards:0,turnovers:0,td:0,fg:0};
+ let opp={points:0,yards:0,turnovers:0,td:0,fg:0};
+ // Ten alternating possessions. Each event is recorded as it happens.
+ for(let drive=0;drive<10;drive++){
+  const userPossession=(drive%2===0)===g.home;
+  const side=userPossession?"user":"opp";
+  const offense=userPossession?userTeam:oppTeam;
+  const defense=userPossession?oppTeam:userTeam;
+  const label=userPossession?"YOUR OFFENSE":"OPPONENT OFFENSE";
+  const passRate=getPassRate(userPossession);
+  const result=makeDrive(offense,defense,label,passRate);
+  const target=userPossession?user:opp;
+  target.points+=result.points;
+  target.yards+=result.yards;
+  if(result.turnover)target.turnovers++;
+  if(result.td)target.td++;
+  if(result.fg)target.fg++;
+  result.events.forEach(event=>timeline.push({side,text:event,drive:drive+1}));
  }
- let us=user.points,them=opp.points;
- if(us===them){
-  if(Math.random()<.5)us+=3;else them+=3;
-  story.push("OVERTIME: a late scoring drive breaks the tie.");
+ // Ensure no tie at the end; log the deciding event at the end of the timeline.
+ if(user.points===opp.points){
+  if(Math.random()<.5){
+   user.points+=3;
+   user.fg++;
+   timeline.push({side:"user",drive:11,text:"OVERTIME: your team wins with a decisive field goal."});
+  }else{
+   opp.points+=3;
+   opp.fg++;
+   timeline.push({side:"opp",drive:11,text:"OVERTIME: the opponent wins with a decisive field goal."});
+  }
  }
- const won=us>them;
- story.unshift(`MATCHUP: your offense vs their defense — ${userTeam.off} attack rating, opposing defense ${oppTeam.def}.`);
- story.unshift(`MATCHUP: their offense vs your defense — ${oppTeam.off} attack rating, your defense ${userTeam.def}.`);
- story.push(`TOTAL YARDS: your team ${user.totalYards}; opponent ${opp.totalYards}.`);
- story.push(`SCORING: your team ${user.td} touchdowns and ${user.fg} field goals; opponent ${opp.td} touchdowns and ${opp.fg} field goals.`);
- story.push(`TURNOVERS: your team ${user.turnovers}; opponent ${opp.turnovers}.`);
- const injured=maybeInjury();
- if(injured)story.push(`INJURY REPORT: ${injured.name} (${injured.pos}) is out for ${injured.injured} week(s).`);
+ const won=user.points>opp.points;
+ const injury=maybeInjury();
+ if(injury)timeline.push({side:"neutral",drive:12,text:`INJURY REPORT: ${injury.name} (${injury.pos}) is out for ${injury.injured} week(s).`});
  const mvp=career.roster.filter(p=>p.starter&&!p.injured).sort((a,b)=>b.rating-a.rating)[0]||career.roster[0];
- story.push(`PLAYER OF THE GAME: ${mvp.name}, ${mvp.pos} — rating ${mvp.rating}.`);
- career.results.push({week:g.week,opponent:g.opponent,home:g.home,scoreFor:us,scoreAgainst:them,won,userYards:user.totalYards,userTO:user.turnovers,mvp:mvp.name});
- userBase.pf+=us;userBase.pa+=them;oppBase.pf+=them;oppBase.pa+=us;
+ timeline.push({side:"neutral",drive:13,text:`PLAYER OF THE GAME: ${mvp.name}, ${mvp.pos} — rating ${mvp.rating}.`});
+ const homeScore=g.home?user.points:opp.points;
+ const awayScore=g.home?opp.points:user.points;
+ career.results.push({
+  week:g.week,opponent:g.opponent,home:g.home,
+  scoreFor:user.points,scoreAgainst:opp.points,won,
+  userYards:user.yards,userTO:user.turnovers,mvp:mvp.name
+ });
+ userBase.pf+=user.points;userBase.pa+=opp.points;
+ oppBase.pf+=opp.points;oppBase.pa+=user.points;
  if(won){userBase.w++;oppBase.l++}else{userBase.l++;oppBase.w++}
  career.cash=Math.max(0,career.cash+3-userTeam.off*.005);
  career.roster.forEach(p=>{if(p.injured>0)p.injured--});
  career.week=career.results.length+1;
  save();renderDash();
  document.getElementById("gameWeek").textContent="WEEK "+g.week;
- const homeName=g.home?career.team:g.opponent;
- const awayName=g.home?g.opponent:career.team;
- document.getElementById("homeName").textContent=homeName.toUpperCase();
- document.getElementById("awayName").textContent=awayName.toUpperCase();
-
- // Correct scoreboard order: home team first, away team second.
- const homeScore=g.home?us:them;
- const awayScore=g.home?them:us;
+ document.getElementById("homeName").textContent=(g.home?career.team:g.opponent).toUpperCase();
+ document.getElementById("awayName").textContent=(g.home?g.opponent:career.team).toUpperCase();
+ // Scoreboard always matches the home/away team order shown above.
  document.getElementById("finalScore").textContent=`${homeScore} : ${awayScore}`;
-
  document.getElementById("resultLabel").textContent=won?"VICTORY":"DEFEAT";
- document.getElementById("userYards").textContent=user.totalYards;
+ document.getElementById("userYards").textContent=user.yards;
  document.getElementById("userTO").textContent=user.turnovers;
  document.getElementById("mvpRating").textContent=mvp.rating;
- document.getElementById("story").innerHTML=story.map(s=>`<div class="event">${s}</div>`).join("");
+ document.getElementById("story").innerHTML=timeline.map((e,i)=>{
+  const label=e.side==="user"?"YOUR TEAM":e.side==="opp"?"OPPONENT":"GAME UPDATE";
+  return `<div class="drive-label">EVENT ${i+1} · ${label}</div><div class="event">${e.text}</div>`;
+ }).join("");
  show("game");
 }
+function toggleStory(){
+ const p=document.getElementById("storyPanel");
+ p.style.display=p.style.display==="none"?"block":"none";
+}
+function showSchedule(){
+ document.getElementById("scheduleList").innerHTML=career.schedule.map((g,i)=>{
+  const r=career.results[i];
+  const left=g.home?career.team:g.opponent,right=g.home?g.opponent:career.team;
+  const score=r?`${g.home?r.scoreFor:r.scoreAgainst}–${g.home?r.scoreAgainst:r.scoreFor}`:"";
+  return `<div class="item"><div><div class="muted">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${left} vs ${right}</strong></div><div>${r?`<strong class="rating">${score}</strong><div class="muted">${r.won?"WIN":"LOSS"}</div>`:"<span class='muted'>UPCOMING</span>"}</div></div>`;
+ }).join("");
+ show("schedule");
+}
+function showStandings(){
+ document.getElementById("standingsList").innerHTML=
+ '<div class="item muted"><span>FRANCHISE</span><span>W-L · DIFF</span></div>'+
+ ranked().map((t,i)=>`<div class="item"><strong>${i+1}. ${t.name}${t.name===career.team?" ★":""}</strong><span>${t.w}-${t.l} · ${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</span></div>`).join("");
+ show("standings");
+}
 function renderInitial(){
- if(career&&career.version===6){
+ if(career&&career.version===7){
   career.roster.forEach(p=>{if(typeof p.injured!=="number")p.injured=0});
   renderDash();
  }
