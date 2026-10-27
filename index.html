@@ -5,197 +5,480 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B0F0D">
-<title>54TH &amp; GOAL — Emerald Prestige</title>
+<title>54TH &amp; GOAL</title>
 <style>
-:root{--bg:#0B0F0D;--panel:#131A16;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:system-ui,-apple-system,sans-serif}
-body{background:radial-gradient(ellipse at 50% -20%,#20372b,transparent 50%),var(--bg)}
-button,input,select{font:inherit}button{cursor:pointer;color:inherit}
-#app{max-width:600px;margin:auto;min-height:100svh;padding:env(safe-area-inset-top) 17px env(safe-area-inset-bottom)}
-.screen{display:none;min-height:95svh;animation:fade .35s ease}.screen.active{display:flex;flex-direction:column}
-@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.topline{display:flex;justify-content:space-between;align-items:center;padding:20px 0 14px}
-.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);font-weight:750}
-.wordmark{font-size:10px;letter-spacing:.25em;color:var(--silver)}
-.back{background:none;border:0;color:var(--silver);font-size:10px;padding:10px 0}
-.btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px;margin:7px 0;border:1px solid var(--line);border-radius:3px;background:#141c16;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+:root{--bg:#0B0F0D;--panel:#131A16;--green:#244936;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830;--gold:#C4AE76}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -20%,#20372b,transparent 50%),var(--bg);color:var(--white);font-family:system-ui,-apple-system,sans-serif}
+button,input,select{font:inherit}button{color:inherit;cursor:pointer}
+#app{max-width:620px;margin:auto;min-height:100svh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
+.screen{display:none;min-height:94svh;animation:fade .25s}.screen.active{display:flex;flex-direction:column}
+@keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+.topline{display:flex;align-items:center;justify-content:space-between;padding:19px 0 14px}
+.wordmark{font-size:10px;letter-spacing:.22em;color:var(--silver)}.eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--silver);font-weight:800}
+.back{background:none;border:0;color:var(--silver);font-size:10px;padding:9px 0}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(34px,9vw,54px);line-height:.97;letter-spacing:-.055em;margin:16px 0}
+h2{font-size:32px;line-height:1;letter-spacing:-.045em;margin:16px 0}
+h3{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+p{font-size:12px;line-height:1.65;color:#aeb9b1}
+.panel,.hero{background:linear-gradient(145deg,#1a281f,#101511);border:1px solid var(--line);padding:16px;margin:8px 0}
+.hero{padding:26px 20px;margin:auto 0}
+.btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;background:#141c16;border:1px solid var(--line);padding:14px;margin:6px 0;text-align:left;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;border-radius:3px}
 .btn.primary{background:linear-gradient(110deg,#284638,#193528);border-color:#607b69}
-.btn.subtle{background:transparent;color:var(--muted)}.btn:disabled{opacity:.4}
-.arrow{color:var(--silver);font-size:17px}
-.hero,.panel,.game-card{border:1px solid var(--line);background:linear-gradient(145deg,#1a281f,#101511);padding:18px;margin:9px 0}
-.hero{margin:auto 0;padding:28px 20px}
-.hero h1{font-size:clamp(30px,8vw,43px);line-height:1;letter-spacing:-.05em}
-p{font-size:12px;line-height:1.7;color:#aeb9b1}
-.logo{width:64px;height:64px;border:1px solid #65786b;transform:rotate(45deg);display:grid;place-items:center;margin:10px auto 28px}
-.logo span{transform:rotate(-45deg);font-size:20px;font-weight:950;color:var(--silver)}
-.form-title{font-size:35px;line-height:1;letter-spacing:-.05em;margin:22px 0 12px}
-.field-label{display:block;font-size:10px;letter-spacing:.15em;color:var(--silver);margin:22px 0 8px}
-.field{width:100%;padding:14px;background:#0d120f;color:var(--white);border:1px solid #354238;border-radius:3px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
-.stat{background:#141c16;border:1px solid var(--line);padding:13px 8px}.stat strong{font-size:23px;display:block;color:var(--silver)}.stat small{font-size:8px;letter-spacing:.1em;color:var(--muted)}
-.panel h3{font-size:11px;letter-spacing:.15em;margin:0 0 12px;text-transform:uppercase}.panel p{margin:0}
+.btn:disabled{opacity:.4}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px}.grid2 .btn{margin:0;padding:13px 9px}
-.rowitem{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}.rowitem:last-child{border:0}
-.tag{font-size:9px;color:var(--muted);letter-spacing:.08em}.score{font-size:18px;font-weight:900;color:var(--silver)}
-.bigscore{text-align:center;font-size:45px;font-weight:950;letter-spacing:-.05em;margin:18px 0}
-.matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;text-align:center;align-items:center;margin:15px 0}.matchup strong{font-size:12px}.matchup small{display:block;font-size:9px;color:var(--muted);margin-top:5px}
-.event{font-size:11px;line-height:1.65;padding:10px 0;border-bottom:1px solid var(--line);color:#c3ccc5}.event:last-child{border:0}
-.foot{text-align:center;margin-top:auto;padding:25px 0 12px;color:#7f8b83;font-size:9px;letter-spacing:.18em}
-.intro{position:relative;min-height:100svh;justify-content:space-between;overflow:hidden}.scene{position:absolute;inset:-8%;background:radial-gradient(ellipse at 50% 60%,#526c59,#0a0d0b 60%);animation:camera 8s ease-in-out infinite alternate}.scene:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#080b0955,#080b09 100%)}
-@keyframes camera{to{transform:scale(1.2) translate(1%,-1%)}}
-.introcontent{position:relative;z-index:2;margin:auto 0;padding:13vh 5px;min-height:70svh;display:flex;flex-direction:column;justify-content:center}
-.ititle{font-size:clamp(40px,12vw,65px);line-height:.95;letter-spacing:-.05em;opacity:0;animation:reveal .8s .2s forwards}.icopy{opacity:0;animation:reveal .7s .6s forwards;max-width:250px;letter-spacing:.1em;text-transform:uppercase;font-size:10px}
-@keyframes reveal{to{opacity:1;transform:translateY(0)}}
-.progress{display:flex;gap:4px}.progress span{height:2px;flex:1;background:#ffffff30}.progress .done{background:var(--silver)}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}
+.field-label{display:block;font-size:10px;letter-spacing:.14em;color:var(--silver);margin:18px 0 7px}
+.field{width:100%;padding:13px;background:#0d120f;color:var(--white);border:1px solid #354238;border-radius:3px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+.stat{background:#141c16;border:1px solid var(--line);padding:12px 8px}
+.stat strong{display:block;font-size:23px;color:var(--silver)}.stat small{font-size:8px;letter-spacing:.1em;color:var(--muted)}
+.item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}
+.item:last-child{border-bottom:0}.muted{color:var(--muted);font-size:10px}.rating{font-size:17px;font-weight:900;color:var(--silver)}
+.pill{display:inline-block;border:1px solid var(--line);padding:5px 7px;font-size:9px;color:var(--silver);letter-spacing:.08em}
+.matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;text-align:center;align-items:center;margin:15px 0}
+.matchup strong{font-size:12px}.matchup small{display:block;color:var(--muted);font-size:9px;margin-top:5px}
+.bigscore{text-align:center;font-size:46px;font-weight:950;letter-spacing:-.06em;margin:18px 0}
+.event{font-size:11px;line-height:1.6;padding:10px 0;border-bottom:1px solid var(--line);color:#c3ccc5}.event:last-child{border:0}
+.bar{height:5px;background:#29342c;margin-top:7px}.bar span{display:block;height:100%;background:#76927d}
+.foot{text-align:center;margin-top:auto;padding:24px 0 10px;color:#7f8b83;font-size:9px;letter-spacing:.17em}
+.logo{width:60px;height:60px;border:1px solid #65786b;transform:rotate(45deg);display:grid;place-items:center;margin:8px auto 25px}
+.logo span{transform:rotate(-45deg);font-weight:950;color:var(--silver)}
+.notice{border-left:2px solid var(--gold);padding:9px 12px;color:#d7cba9;font-size:11px;line-height:1.6}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
-<body><main id="app">
+<body>
+<main id="app">
 
 <section id="home" class="screen active">
-<div class="topline"><span class="wordmark">FRONT OFFICE SIMULATION</span><span class="eyebrow">54TH</span></div>
-<div class="hero"><div class="logo"><span>54TH</span></div><div class="eyebrow">A NEW ERA OF FRANCHISE</div><h1>YOUR FRANCHISE.<br><span style="color:var(--silver)">YOUR LEGACY.</span></h1><p>Build your roster. Prepare for Sunday. Make every decision count.</p></div>
-<button class="btn primary" onclick="startIntro()"><span>Start a New Career</span><span class="arrow">↗</span></button>
-<button class="btn" onclick="loadCareer()"><span>Load Career</span><span class="arrow">→</span></button><div class="foot">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
+ <div class="topline"><span class="wordmark">FRONT OFFICE SIMULATION</span><span class="eyebrow">V0.6</span></div>
+ <div class="hero">
+  <div class="logo"><span>54TH</span></div>
+  <div class="eyebrow">YOUR FRANCHISE. YOUR CALL.</div>
+  <h1>BUILD YOUR<br><span style="color:var(--silver)">LEGACY.</span></h1>
+  <p>Build your roster. Set your identity. Make the calls that define your franchise.</p>
+ </div>
+ <button class="btn primary" onclick="show('setup')">START A NEW CAREER <span>↗</span></button>
+ <button class="btn" onclick="loadCareer()">CONTINUE CAREER <span>→</span></button>
+ <div class="foot">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
 </section>
 
-<section id="intro" class="screen intro">
-<div id="scene" class="scene"></div><div class="topline" style="position:relative;z-index:2"><span class="wordmark">54TH &amp; GOAL</span><button class="back" onclick="skipIntro()">SKIP INTRO ↗</button></div>
-<div class="introcontent"><div id="ikicker" class="eyebrow">THE OPENING STATEMENT</div><h1 id="ititle" class="ititle">A SEASON<br>IS MADE OF…</h1><p id="icopy" class="icopy">Every moment matters.</p></div>
-<div style="position:relative;z-index:2;padding-bottom:20px"><div id="progress" class="progress"></div><button class="btn primary" onclick="nextSlide()">CONTINUE <span class="arrow">→</span></button></div>
-</section>
-
-<section id="create" class="screen">
-<div class="topline"><button class="back" onclick="show('home')">← MAIN MENU</button><span class="eyebrow">CAREER SETUP</span></div>
-<div class="eyebrow">TAKE THE HELM</div><h2 class="form-title">Your franchise.<br>Your decisions.</h2><p>Choose your identity and the franchise you'll lead.</p>
-<form onsubmit="createCareer(event)">
-<label class="field-label" for="gm">GENERAL MANAGER NAME *</label><input class="field" id="gm" maxlength="32" placeholder="Enter your name" required>
-<label class="field-label" for="team">CHOOSE YOUR FRANCHISE</label><select class="field" id="team"></select>
-<button class="btn primary" type="submit" style="margin-top:25px">CREATE FRANCHISE <span class="arrow">↗</span></button></form>
+<section id="setup" class="screen">
+ <div class="topline"><button class="back" onclick="show('home')">← MAIN MENU</button><span class="eyebrow">CAREER SETUP</span></div>
+ <div class="eyebrow">TAKE THE HELM</div><h2>Your franchise.<br>Your decisions.</h2>
+ <form onsubmit="newCareer(event)">
+  <label class="field-label" for="gm">GENERAL MANAGER NAME</label>
+  <input class="field" id="gm" maxlength="32" placeholder="Enter your name" required>
+  <label class="field-label" for="teamChoice">CHOOSE YOUR FRANCHISE</label>
+  <select class="field" id="teamChoice"></select>
+  <button class="btn primary" type="submit">CREATE FRANCHISE <span>↗</span></button>
+ </form>
+ <div class="notice">Starting a new career replaces the saved career on this device.</div>
 </section>
 
 <section id="dash" class="screen">
-<div class="topline"><button class="back" onclick="show('home')">← MAIN MENU</button><span id="weekLabel" class="eyebrow">YEAR 1 · WEEK 1</span></div>
-<div class="eyebrow">WELCOME TO THE FRONT OFFICE</div><h2 id="teamTitle" class="form-title">Your Franchise</h2><p id="gmLabel"></p>
-<div class="stats"><div class="stat"><strong id="record">0–0</strong><small>RECORD</small></div><div class="stat"><strong id="rank">1</strong><small>RANK</small></div><div class="stat"><strong id="pf">0</strong><small>POINTS FOR</small></div></div>
-<div class="panel"><h3>Next Game</h3><div id="nextGame"></div><button id="playButton" class="btn primary" onclick="playGame()">PLAY NEXT GAME <span class="arrow">↗</span></button></div>
-<div class="grid2"><button class="btn" onclick="showSchedule()">SCHEDULE →</button><button class="btn" onclick="showStandings()">STANDINGS →</button><button class="btn" onclick="showRoster()">TEAM RATINGS →</button><button class="btn" onclick="show('office')">FRONT OFFICE →</button></div>
+ <div class="topline"><button class="back" onclick="show('home')">← MAIN MENU</button><span id="weekLabel" class="eyebrow">WEEK 1</span></div>
+ <div class="eyebrow">GENERAL MANAGER OFFICE</div><h2 id="teamTitle">Your Franchise</h2><p id="gmLabel"></p>
+ <div class="stats">
+  <div class="stat"><strong id="record">0–0</strong><small>RECORD</small></div>
+  <div class="stat"><strong id="rank">1</strong><small>RANK</small></div>
+  <div class="stat"><strong id="pf">0</strong><small>POINTS FOR</small></div>
+ </div>
+ <div class="panel"><h3>Next Game</h3><div id="nextGame"></div><button id="playButton" class="btn primary" onclick="playGame()">PLAY NEXT GAME <span>↗</span></button></div>
+ <div class="grid2">
+  <button class="btn" onclick="showSchedule()">SCHEDULE</button><button class="btn" onclick="showStandings()">STANDINGS</button>
+  <button class="btn" onclick="showRoster()">ROSTER</button><button class="btn" onclick="showTactics()">GAME PLAN</button>
+  <button class="btn" onclick="showFinance()">FINANCES</button><button class="btn" onclick="show('office')">SEASON REPORT</button>
+ </div>
+ <div class="foot">54TH &amp; GOAL · FRANCHISE MODE</div>
 </section>
 
 <section id="game" class="screen">
-<div class="topline"><button class="back" onclick="show('dash')">← DASHBOARD</button><span id="gameWeek" class="eyebrow">WEEK 1</span></div>
-<div class="eyebrow">FINAL SCORE</div><div class="panel"><div class="matchup"><div><strong id="homeName">HOME</strong><small>HOME</small></div><span class="tag">VS</span><div><strong id="awayName">AWAY</strong><small>AWAY</small></div></div><div id="finalScore" class="bigscore">0 : 0</div><div id="resultLabel" class="eyebrow" style="text-align:center"></div></div>
-<div class="panel"><h3>Game Story</h3><div id="story"></div></div><button class="btn primary" onclick="show('dash')">RETURN TO FRONT OFFICE →</button>
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span id="gameWeek" class="eyebrow">WEEK 1</span></div>
+ <div class="eyebrow">FINAL SCORE</div>
+ <div class="panel">
+  <div class="matchup"><div><strong id="homeName">HOME</strong><small>HOME</small></div><span class="muted">VS</span><div><strong id="awayName">AWAY</strong><small>AWAY</small></div></div>
+  <div id="finalScore" class="bigscore">0 : 0</div><div id="resultLabel" class="eyebrow" style="text-align:center"></div>
+ </div>
+ <div class="stats">
+  <div class="stat"><strong id="userYards">0</strong><small>YOUR YARDS</small></div>
+  <div class="stat"><strong id="userTO">0</strong><small>YOUR TURNOVERS</small></div>
+  <div class="stat"><strong id="mvpRating">—</strong><small>MVP RATING</small></div>
+ </div>
+ <div class="panel"><h3>Game Story</h3><div id="story"></div></div>
+ <button class="btn primary" onclick="show('dash')">RETURN TO FRONT OFFICE <span>→</span></button>
 </section>
 
-<section id="schedule" class="screen"><div class="topline"><button class="back" onclick="show('dash')">← DASHBOARD</button><span class="eyebrow">SEASON</span></div><h2 class="form-title">Schedule &amp; Results</h2><div id="scheduleList" class="panel"></div></section>
-<section id="standings" class="screen"><div class="topline"><button class="back" onclick="show('dash')">← DASHBOARD</button><span class="eyebrow">LEAGUE TABLE</span></div><h2 class="form-title">Standings</h2><div id="standingsList" class="panel"></div></section>
-<section id="roster" class="screen"><div class="topline"><button class="back" onclick="show('dash')">← DASHBOARD</button><span class="eyebrow">TEAM RATINGS</span></div><h2 class="form-title">Personnel</h2><div id="rosterList" class="panel"></div><p>Ratings are fictional and influence the simulated matchup.</p></section>
-<section id="office" class="screen"><div class="topline"><button class="back" onclick="show('dash')">← DASHBOARD</button><span class="eyebrow">OPERATIONS</span></div><h2 class="form-title">Front Office</h2><div class="panel"><h3>Owner's Mandate</h3><p>Build a competitive team and establish a winning culture.</p></div><div id="report" class="panel"></div></section>
-</main>
+<section id="schedule" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">SEASON</span></div>
+ <h2>Schedule &amp; Results</h2><div id="scheduleList" class="panel"></div>
+</section>
 
+<section id="standings" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">LEAGUE TABLE</span></div>
+ <h2>Standings</h2><div id="standingsList" class="panel"></div>
+</section>
+
+<section id="roster" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">PERSONNEL</span></div>
+ <h2>Your Roster</h2><p>Players have individual ratings, age, potential and contract value. Injuries can temporarily remove a player from the lineup.</p>
+ <div id="rosterSummary" class="stats"></div>
+ <div id="rosterList" class="panel"></div>
+</section>
+
+<section id="tactics" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">GAME PLAN</span></div>
+ <h2>Set Your Identity</h2><p>Your choices affect how your offense and defense perform in each simulated game.</p>
+ <div class="panel"><h3>Offensive Philosophy</h3><div id="offChoices"></div></div>
+ <div class="panel"><h3>Defensive Philosophy</h3><div id="defChoices"></div></div>
+ <button class="btn primary" onclick="saveTactics()">SAVE GAME PLAN <span>↗</span></button>
+</section>
+
+<section id="finance" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">FRONT OFFICE</span></div>
+ <h2>Franchise Finances</h2><div id="financeSummary" class="stats"></div>
+ <div class="panel"><h3>Management Notes</h3><div id="financeNotes"></div></div>
+</section>
+
+<section id="office" class="screen">
+ <div class="topline"><button class="back" onclick="show('dash')">← FRONT OFFICE</button><span class="eyebrow">SEASON REPORT</span></div>
+ <h2>Season Review</h2><div id="report" class="panel"></div>
+</section>
+
+</main>
 <script>
 const TEAMS=[
-{name:"Portland Pines",off:82,def:79,qb:84,run:80,pass:84,ol:81,passD:80,runD:78},
-{name:"Austin Outlaws",off:85,def:75,qb:88,run:78,pass:90,ol:83,passD:74,runD:76},
-{name:"Brooklyn Kings",off:78,def:86,qb:80,run:82,pass:77,ol:79,passD:87,runD:85},
-{name:"Orlando Storm",off:81,def:82,qb:82,run:82,pass:81,ol:81,passD:82,runD:82},
-{name:"Chicago Forge",off:76,def:88,qb:78,run:78,pass:75,ol:77,passD:88,runD:87},
-{name:"Las Vegas Vipers",off:87,def:77,qb:89,run:81,pass:91,ol:84,passD:77,runD:77},
-{name:"San Diego Tritons",off:83,def:81,qb:83,run:84,pass:82,ol:82,passD:81,runD:81},
-{name:"Boston Foundry",off:79,def:80,qb:81,run:80,pass:79,ol:80,passD:80,runD:80}
+ {name:"Portland Pines",off:82,def:79,qb:84,run:80,pass:84,ol:81,passD:80,runD:78},
+ {name:"Austin Outlaws",off:85,def:75,qb:88,run:78,pass:90,ol:83,passD:74,runD:76},
+ {name:"Brooklyn Kings",off:78,def:86,qb:80,run:82,pass:77,ol:79,passD:87,runD:85},
+ {name:"Orlando Storm",off:81,def:82,qb:82,run:82,pass:81,ol:81,passD:82,runD:82},
+ {name:"Chicago Forge",off:76,def:88,qb:78,run:78,pass:75,ol:77,passD:88,runD:87},
+ {name:"Las Vegas Vipers",off:87,def:77,qb:89,run:81,pass:91,ol:84,passD:77,runD:77},
+ {name:"San Diego Tritons",off:83,def:81,qb:83,run:84,pass:82,ol:82,passD:81,runD:81},
+ {name:"Boston Foundry",off:79,def:80,qb:81,run:80,pass:79,ol:80,passD:80,runD:80}
 ];
-const SLIDES=[
-["tunnel","THE OPENING STATEMENT","A SEASON<br>IS MADE OF…","Every moment matters. Every decision leaves a mark."],
-["players","THE PEOPLE ON THE FIELD",'53 <span style="color:#AFC3B5">PLAYERS.</span>',"One roster. Fifty-three different stories."],
-["staff","THE PLAN BEHIND THE GAME","ONE<br>COACHING STAFF.","One game plan. One shared vision."],
-["city","MORE THAN A TEAM",'ONE<br><span style="color:#AFC3B5">FRANCHISE.</span>',"A city. A legacy. A dream."],
-["you","THE PERSON BEHIND EVERY CALL",'ONE PERSON.<br><span style="color:#AFC3B5">YOU.</span>',"Every decision starts with the person willing to make it."],
-["final","YOUR STORY STARTS HERE",'YOU.<br><span style="color:#AFC3B5">THE 54TH.</span>',"Your franchise. Your call. Your legacy."]
+const FIRST=["Alex","Jordan","Marcus","Darius","Ethan","Noah","Cameron","Miles","Logan","Tyler","Jalen","Riley","Caleb","Devin","Andre","Isaiah","Cole","Mason","Trey","Jamal","Ryan","Dylan","Blake","Jace"];
+const LAST=["Carter","Brooks","Hayes","Mitchell","Reed","Bennett","Walker","Turner","Foster","Morgan","Price","Collins","Parker","James","Cooper","Ward","Young","Harris","Morris","Perry","Bell","Gray","Ross","Powell"];
+const POSITIONS=[
+ {p:"QB",w:2},{p:"RB",w:2},{p:"WR",w:3},{p:"TE",w:1},{p:"OL",w:3},
+ {p:"DL",w:2},{p:"LB",w:2},{p:"CB",w:2},{p:"S",w:1},{p:"K",w:1}
 ];
-let career=null,slide=0,timer=null;
-try{career=JSON.parse(localStorage.getItem("f54")||"null")}catch(e){}
-document.getElementById("team").innerHTML=TEAMS.map(t=>`<option>${t.name}</option>`).join("");
+const OFF_TACTICS={
+ Balanced:{label:"Balanced",desc:"A flexible mix of passing and rushing.",pass:0,run:0,wear:0},
+ "Pass Heavy":{label:"Pass Heavy",desc:"More passing opportunities; quarterback and pass protection matter more.",pass:5,run:-3,wear:1},
+ "Ground Control":{label:"Ground Control",desc:"More rushing and ball security; the offensive line matters more.",pass:-3,run:5,wear:-1}
+};
+const DEF_TACTICS={
+ Balanced:{label:"Balanced",desc:"No major weakness or specialization.",pass:0,run:0,risk:0},
+ "Stop the Pass":{label:"Stop the Pass",desc:"Better against passing attacks, but more vulnerable to rushing.",pass:5,run:-3,risk:0},
+ "Pressure & Blitz":{label:"Pressure & Blitz",desc:"More chances to disrupt the QB, with extra risk of explosive plays.",pass:3,run:0,risk:3}
+};
+let career=null;
+try{career=JSON.parse(localStorage.getItem("f54v06")||"null")}catch(e){career=null}
+document.getElementById("teamChoice").innerHTML=TEAMS.map(t=>`<option>${t.name}</option>`).join("");
 
-function show(id){if(id!=="intro")clearTimeout(timer);document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo(0,0)}
-function startIntro(){slide=0;renderSlide();show("intro")}
-function renderSlide(){clearTimeout(timer);const s=SLIDES[slide];document.getElementById("scene").style.backgroundImage=s[0]==="final"?"radial-gradient(ellipse at 50% 60%,#3a6048,#060907 72%)":"";document.getElementById("scene").className="scene "+s[0];document.getElementById("ikicker").textContent=s[1];document.getElementById("ititle").innerHTML=s[2];document.getElementById("icopy").textContent=s[3];document.getElementById("progress").innerHTML=SLIDES.map((_,i)=>`<span class="${i<=slide?"done":""}"></span>`).join("");timer=setTimeout(()=>{if(!document.getElementById("intro").classList.contains("active"))return;if(slide<SLIDES.length-1){slide++;renderSlide()}else show("create")},6500)}
-function nextSlide(){clearTimeout(timer);if(slide<SLIDES.length-1){slide++;renderSlide()}else show("create")}
-function skipIntro(){clearTimeout(timer);show("create")}
-function save(){try{localStorage.setItem("f54",JSON.stringify(career))}catch(e){}}
-function team(name){return career.teams.find(t=>t.name===name)}
-function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function createCareer(e){e.preventDefault();let gm=document.getElementById("gm").value.trim();if(!gm)return;let name=document.getElementById("team").value;career={gm,team:name,week:1,results:[],teams:TEAMS.map(t=>({...t,w:0,l:0,pf:0,pa:0})),schedule:shuffle(TEAMS.filter(t=>t.name!==name).map(t=>t.name)).slice(0,7).map((opponent,i)=>({week:i+1,opponent,home:i%2===0}))};save();renderDash();show("dash")}
-function loadCareer(){if(!career){alert("No saved career yet.");return}if(!career.teams||!career.schedule||!career.results){alert("This save is from an older version. Please start a new career for v0.5.");return}renderDash();show("dash")}
-function ranked(){return [...career.teams].sort((a,b)=>b.w-a.w||((b.pf-b.pa)-(a.pf-a.pa)))}
-function renderDash(){if(!career)return;let wins=career.results.filter(r=>r.won).length,loss=career.results.length-wins;document.getElementById("teamTitle").textContent=career.team;document.getElementById("gmLabel").textContent="General Manager: "+career.gm;document.getElementById("record").textContent=wins+"–"+loss;document.getElementById("pf").textContent=career.results.reduce((n,r)=>n+r.scoreFor,0);let rank=ranked().findIndex(t=>t.name===career.team)+1;document.getElementById("rank").textContent=rank;document.getElementById("weekLabel").textContent=career.results.length===7?"SEASON COMPLETE":"YEAR 1 · WEEK "+(career.results.length+1);let g=career.schedule[career.results.length];document.getElementById("nextGame").innerHTML=g?`<div class="rowitem"><div><div class="tag">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}</strong></div><span class="tag">UP NEXT</span></div>`:"<p>Regular season complete. Review the final standings.</p>";document.getElementById("playButton").disabled=!g;document.getElementById("playButton").innerHTML=g?`PLAY WEEK ${g.week} <span class="arrow">↗</span>`:"SEASON COMPLETE";document.getElementById("report").innerHTML=`<h3>Season Report</h3><p>${wins} wins, ${loss} losses. Your offense is rated ${team(career.team).off}; your defense is rated ${team(career.team).def}.</p>`}
-function rand(min,max){return Math.random()*(max-min)+min}
+function show(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
+}
+function rand(a,b){return Math.random()*(b-a)+a}
+function irand(a,b){return Math.floor(rand(a,b+1))}
 function clamp(n,a,b){return Math.max(a,Math.min(b,n))}
-function offenseDrive(att,def,story,side){
-let pos=25,downs=0,plays=0,yards=0;
-while(plays<7&&pos<100){
-plays++;
-let pass=Math.random()<.58;
-let unit=pass?(att.pass+att.qb+att.ol)/3:(att.run+att.ol)/2;
-let stop=pass?def.passD:def.runD;
-let edge=unit-stop;
-let sack=pass&&Math.random()<clamp(.065-edge*.001, .025,.12);
-let turnover=Math.random()<clamp(.025-edge*.0006,.008,.06);
-if(turnover){story.push(`${side}: turnover ${pass?"on a pass":"on a run"} after defensive pressure.`);return{points:0,turnover:true,yards}}
-if(sack){let loss=Math.round(rand(3,9));pos-=loss;yards-=loss;story.push(`${side}: the pass rush records a ${loss}-yard sack.`);if(pos<1)pos=1;continue}
-let gain;
-if(pass){
-let completion=Math.random()<clamp(.63+edge*.006,.42,.82);
-gain=completion?Math.round(rand(3,13)+edge*.10):0;
-if(!completion)story.push(`${side}: incomplete pass on ${downs===3?"third": "a"} down.`);
-}else gain=Math.round(rand(-2,8)+edge*.12);
-pos+=gain;yards+=gain;
-if(gain>=100-pos+gain){pos=100;break}
-if(pos>=100)break;
-downs++;
-if(gain>=10||pos>=100)downs=0;
-if(downs>=4)break;
+function pick(a){return a[irand(0,a.length-1)]}
+function save(){try{localStorage.setItem("f54v06",JSON.stringify(career))}catch(e){}}
+function makeRoster(){
+ return Array.from({length:19},(_,i)=>{
+  const role=POSITIONS[i%POSITIONS.length].p;
+  const rating=irand(62,91);
+  return{
+   id:i+1,name:pick(FIRST)+" "+pick(LAST),pos:role,rating,
+   age:irand(21,32),potential:clamp(rating+irand(0,17),rating,99),
+   salary:Math.round((rating-50)*0.19*10)/10,
+   injured:0,starter:false
+  };
+ });
 }
-if(pos>=100){story.push(`${side}: touchdown drive, ${yards} yards gained.`);return{points:7,turnover:false,yards}}
-if(pos>=68){let fg=Math.random()<.76;if(fg){story.push(`${side}: field goal from the ${100-pos}-yard line.`);return{points:3,turnover:false,yards}}story.push(`${side}: field goal attempt misses.`);return{points:0,turnover:false,yards}}
-if(Math.random()<.12){story.push(`${side}: long field goal attempt is good.`);return{points:3,turnover:false,yards}}
-story.push(`${side}: drive stalls and the defense forces a punt.`);return{points:0,turnover:false,yards}
+function newCareer(e){
+ e.preventDefault();
+ const name=document.getElementById("teamChoice").value;
+ const base=TEAMS.find(t=>t.name===name);
+ career={
+  version:6,gm:document.getElementById("gm").value.trim(),team:name,
+  week:1,results:[],tactics:{off:"Balanced",def:"Balanced"},
+  cash:85,salaryCap:100,roster:makeRoster(),
+  teams:TEAMS.map(t=>({...t,w:0,l:0,pf:0,pa:0})),
+  schedule:shuffle(TEAMS.filter(t=>t.name!==name).map(t=>t.name))
+    .map((opponent,i)=>({week:i+1,opponent,home:i%2===0}))
+ };
+ career.roster.forEach((p,i)=>p.starter=i<11);
+ save();renderDash();show("dash");
 }
-function simulateTeamGame(att,def,story,label){
-let points=0,totalYards=0,turnovers=0,drives=10;
-for(let i=0;i<drives;i++){
-let d=offenseDrive(att,def,story,label);
-points+=d.points;totalYards+=d.yards;if(d.turnover)turnovers++;
+function shuffle(a){
+ a=[...a];
+ for(let i=a.length-1;i>0;i--){let j=irand(0,i);[a[i],a[j]]=[a[j],a[i]]}
+ return a;
 }
-return{points,totalYards,turnovers}
+function loadCareer(){
+ if(!career||career.version!==6){
+  alert("No compatible v0.6 career found. Start a new career to use the new management features.");
+  return;
+ }
+ renderDash();show("dash");
+}
+function getTeam(name){return career.teams.find(t=>t.name===name)}
+function ranked(){return [...career.teams].sort((a,b)=>b.w-a.w||(b.pf-b.pa)-(a.pf-a.pa))}
+function activePlayers(){return career.roster.filter(p=>p.injured===0)}
+function averageRating(list){return list.length?list.reduce((s,p)=>s+p.rating,0)/list.length:65}
+function rosterRatings(){
+ const available=activePlayers();
+ const group=pos=>available.filter(p=>p.pos===pos);
+ const q=group("QB"),r=group("RB"),wr=group("WR"),ol=group("OL"),dl=group("DL"),lb=group("LB"),cb=group("CB"),s=group("S");
+ return{
+  qb:averageRating(q),run:averageRating([...r,...ol]),pass:averageRating([...q,...wr]),
+  ol:averageRating(ol),passD:averageRating([...dl,...lb,...cb,...s]),
+  runD:averageRating([...dl,...lb]),count:available.length
+ };
+}
+function renderDash(){
+ if(!career)return;
+ const wins=career.results.filter(r=>r.won).length,loss=career.results.length-wins;
+ document.getElementById("teamTitle").textContent=career.team;
+ document.getElementById("gmLabel").textContent="General Manager: "+career.gm;
+ document.getElementById("record").textContent=wins+"–"+loss;
+ document.getElementById("pf").textContent=career.results.reduce((n,r)=>n+r.scoreFor,0);
+ document.getElementById("rank").textContent=ranked().findIndex(t=>t.name===career.team)+1;
+ document.getElementById("weekLabel").textContent=career.results.length===7?"SEASON COMPLETE":"YEAR 1 · WEEK "+(career.results.length+1);
+ const g=career.schedule[career.results.length];
+ document.getElementById("nextGame").innerHTML=g
+ ?`<div class="item"><div><div class="muted">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}</strong></div><span class="pill">${g.home?"HOME":"AWAY"}</span></div>`
+ :"<p>Regular season complete. Review your season report.</p>";
+ document.getElementById("playButton").disabled=!g;
+ document.getElementById("playButton").innerHTML=g?`PLAY WEEK ${g.week} <span>↗</span>`:"SEASON COMPLETE";
+ renderReport();
+}
+function renderReport(){
+ const wins=career.results.filter(r=>r.won).length;
+ const losses=career.results.length-wins;
+ const t=getTeam(career.team);
+ document.getElementById("report").innerHTML=
+ `<h3>Season Report</h3>
+ <div class="item"><span>Record</span><strong>${wins}–${losses}</strong></div>
+ <div class="item"><span>League rank</span><strong>#${ranked().findIndex(x=>x.name===career.team)+1}</strong></div>
+ <div class="item"><span>Points scored</span><strong>${t.pf}</strong></div>
+ <div class="item"><span>Points allowed</span><strong>${t.pa}</strong></div>
+ <div class="item"><span>Point differential</span><strong>${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</strong></div>
+ <p>${career.results.length===7?"The regular season is complete.":"There are "+(7-career.results.length)+" regular-season games remaining."}</p>`;
+}
+function showSchedule(){
+ document.getElementById("scheduleList").innerHTML=career.schedule.map((g,i)=>{
+  const r=career.results[i];
+  return `<div class="item"><div><div class="muted">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}</strong></div><div>${r?`<strong class="rating">${g.home?r.scoreFor:r.scoreAgainst}–${g.home?r.scoreAgainst:r.scoreFor}</strong><div class="muted">${r.won?"WIN":"LOSS"}</div>`:"<span class='muted'>UPCOMING</span>"}</div></div>`;
+ }).join("");
+ show("schedule");
+}
+function showStandings(){
+ document.getElementById("standingsList").innerHTML=
+ '<div class="item muted"><span>FRANCHISE</span><span>W-L · DIFF</span></div>'+
+ ranked().map((t,i)=>`<div class="item"><strong>${i+1}. ${t.name}${t.name===career.team?" ★":""}</strong><span>${t.w}-${t.l} · ${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</span></div>`).join("");
+ show("standings");
+}
+function showRoster(){
+ const a=activePlayers(),injured=career.roster.filter(p=>p.injured>0);
+ document.getElementById("rosterSummary").innerHTML=
+ `<div class="stat"><strong>${career.roster.length}</strong><small>PLAYERS</small></div>
+ <div class="stat"><strong>${a.length}</strong><small>AVAILABLE</small></div>
+ <div class="stat"><strong>${injured.length}</strong><small>INJURED</small></div>`;
+ document.getElementById("rosterList").innerHTML=career.roster.map(p=>
+ `<div class="item"><div style="flex:1"><strong>${p.name}</strong><div class="muted">${p.pos} · Age ${p.age} · Potential ${p.potential}${p.injured?` · OUT ${p.injured} WK`:""}</div><div class="bar"><span style="width:${p.rating}%"></span></div></div><div style="text-align:right"><strong class="rating">${p.rating}</strong><button class="btn" style="width:auto;padding:7px;margin-top:5px" onclick="toggleStarter(${p.id})">${p.starter?"STARTER":"BENCH"}</button></div></div>`
+ ).join("");
+ show("roster");
+}
+function toggleStarter(id){
+ const p=career.roster.find(x=>x.id===id);
+ if(!p)return;
+ if(p.injured){alert("This player is injured and cannot start.");return}
+ p.starter=!p.starter;save();showRoster();
+}
+function showTactics(){
+ document.getElementById("offChoices").innerHTML=Object.values(OFF_TACTICS).map(t=>
+ `<button class="btn ${career.tactics.off===t.label?"primary":""}" onclick="chooseTactic('off','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.off===t.label?"✓":"+"}</span></button>`
+ ).join("");
+ document.getElementById("defChoices").innerHTML=Object.values(DEF_TACTICS).map(t=>
+ `<button class="btn ${career.tactics.def===t.label?"primary":""}" onclick="chooseTactic('def','${t.label}')"><span><strong>${t.label}</strong><br><span class="muted">${t.desc}</span></span><span>${career.tactics.def===t.label?"✓":"+"}</span></button>`
+ ).join("");
+ show("tactics");
+}
+function chooseTactic(side,name){
+ career.tactics[side]=name;showTactics();
+}
+function saveTactics(){save();alert("Game plan saved.");show("dash")}
+function showFinance(){
+ const payroll=career.roster.reduce((s,p)=>s+p.salary,0);
+ document.getElementById("financeSummary").innerHTML=
+ `<div class="stat"><strong>$${career.cash.toFixed(1)}M</strong><small>CASH</small></div>
+ <div class="stat"><strong>$${payroll.toFixed(1)}M</strong><small>PAYROLL</small></div>
+ <div class="stat"><strong>${Math.max(0,career.salaryCap-payroll).toFixed(1)}M</strong><small>CAP SPACE</small></div>`;
+ document.getElementById("financeNotes").innerHTML=
+ `<div class="item"><span>Weekly operating income</span><strong>$3.0M</strong></div>
+ <div class="item"><span>Weekly payroll cost</span><strong>$${(payroll/18).toFixed(2)}M</strong></div>
+ <div class="item"><span>Cap status</span><strong>${payroll>career.salaryCap?"OVER CAP":"UNDER CAP"}</strong></div>
+ <p>Finances are a prototype system. Contract negotiations and player trading will be added in a later version.</p>`;
+ show("finance");
+}
+function clampRating(x){return Math.round(clamp(x,50,99))}
+function offenseDrive(att,def,story,label,tactics){
+ let pos=25,plays=0,downs=0,yards=0;
+ while(plays<8&&pos<100){
+  plays++;
+  const pass=Math.random()<tactics.passRate;
+  const unit=pass?(att.pass+att.qb+att.ol)/3:(att.run+att.ol)/2;
+  const stop=pass?def.passD:def.runD;
+  const edge=unit-stop;
+  const sack=pass&&Math.random()<clamp(.065-edge*.001,.02,.13);
+  if(Math.random()<clamp(.025-edge*.0007,.006,.065)){
+   story.push(`${label}: turnover after defensive pressure.`);
+   return{points:0,turnover:true,yards};
+  }
+  if(sack){
+   const loss=irand(3,9);pos=Math.max(1,pos-loss);yards-=loss;downs++;
+   story.push(`${label}: the defense records a ${loss}-yard sack.`);
+   if(downs>=4)break;
+   continue;
+  }
+  let gain;
+  if(pass){
+   const complete=Math.random()<clamp(.62+edge*.006,.4,.84);
+   gain=complete?irand(3,13)+Math.round(edge*.1):0;
+   if(!complete)story.push(`${label}: an incomplete pass stops the drive.`);
+  }else{
+   gain=irand(-2,8)+Math.round(edge*.12);
+  }
+  pos+=gain;yards+=gain;
+  if(pos>=100){pos=100;break}
+  if(gain>=10)downs=0;else downs++;
+  if(downs>=4)break;
+  if(pos<1)pos=1;
+ }
+ if(pos>=100){
+  story.push(`${label}: TOUCHDOWN after a ${Math.max(1,yards)}-yard drive.`);
+  return{points:7,turnover:false,yards,td:true};
+ }
+ if(pos>=68){
+  if(Math.random()<.76){
+   story.push(`${label}: field goal is GOOD.`);
+   return{points:3,turnover:false,yards,fg:true};
+  }
+  story.push(`${label}: field goal attempt misses.`);
+  return{points:0,turnover:false,yards};
+ }
+ if(Math.random()<.09){
+  story.push(`${label}: a long field goal is GOOD.`);
+  return{points:3,turnover:false,yards,fg:true};
+ }
+ story.push(`${label}: the drive stalls and ends in a punt.`);
+ return{points:0,turnover:false,yards};
+}
+function teamStrengths(name,isUser){
+ const base=career.teams.find(t=>t.name===name);
+ if(!isUser)return{...base};
+ const r=rosterRatings(),ot=OFF_TACTICS[career.tactics.off],dt=DEF_TACTICS[career.tactics.def];
+ return{
+  ...base,
+  qb:clampRating((base.qb+r.qb)/2),
+  pass:clampRating((base.pass+r.pass)/2+ot.pass),
+  run:clampRating((base.run+r.run)/2+ot.run),
+  ol:clampRating((base.ol+r.ol)/2),
+  passD:clampRating((base.passD+r.passD)/2+dt.pass),
+  runD:clampRating((base.runD+r.runD)/2+dt.run)
+ };
+}
+function simulateTeamGame(att,def,story,label,isUser){
+ const tactics=isUser?OFF_TACTICS[career.tactics.off]:OFF_TACTICS.Balanced;
+ const defTactics=isUser?DEF_TACTICS[career.tactics.def]:DEF_TACTICS.Balanced;
+ const tunedAtt={...att,pass:att.pass+tactics.pass,run:att.run+tactics.run};
+ const tunedDef={...def,passD:def.passD+defTactics.pass,runD:def.runD+defTactics.run};
+ const passRate=tactics.label==="Pass Heavy"?.72:tactics.label==="Ground Control"?.42:.58;
+ let points=0,totalYards=0,turnovers=0,td=0,fg=0;
+ for(let i=0;i<10;i++){
+  const d=offenseDrive(tunedAtt,tunedDef,story,label,{passRate});
+  points+=d.points;totalYards+=d.yards;
+  if(d.turnover)turnovers++;
+  if(d.td)td++;
+  if(d.fg)fg++;
+ }
+ return{points,totalYards,turnovers,td,fg};
+}
+function maybeInjury(){
+ if(Math.random()>.18)return null;
+ const starters=career.roster.filter(p=>p.starter&&!p.injured);
+ if(!starters.length)return null;
+ const p=pick(starters);
+ p.injured=irand(1,3);
+ p.starter=false;
+ return p;
 }
 function playGame(){
-if(!career||career.results.length>=7)return;
-let g=career.schedule[career.results.length],u=team(career.team),o=team(g.opponent),story=[];
-let user,opp;
-if(g.home){user=simulateTeamGame(u,o,story,"Your offense");opp=simulateTeamGame(o,u,story,"Opponent offense")}
-else{opp=simulateTeamGame(o,u,story,"Opponent offense");user=simulateTeamGame(u,o,story,"Your offense")}
-let us=user.points,them=opp.points;
-if(us===them){if(Math.random()<.5)us+=3;else them+=3;story.push("A late scoring drive breaks the tie.")}
-let won=us>them;
-story.unshift(`Matchup: your offense ${u.off} vs opposing defense ${o.def}.`);
-story.unshift(`Matchup: opposing offense ${o.off} vs your defense ${u.def}.`);
-story.push(`Estimated yards: your offense ${user.totalYards}, opponent ${opp.totalYards}.`);
-story.push(`Turnovers: your team ${user.turnovers}, opponent ${opp.turnovers}.`);
-career.results.push({week:g.week,opponent:g.opponent,home:g.home,scoreFor:us,scoreAgainst:them,won,story});
-let ut=team(career.team),ot=team(g.opponent);ut.pf+=us;ut.pa+=them;ot.pf+=them;ot.pa+=us;if(won){ut.w++;ot.l++}else{ut.l++;ot.w++}
-career.week=career.results.length+1;save();renderDash();
-document.getElementById("gameWeek").textContent="WEEK "+g.week;
-document.getElementById("homeName").textContent=(g.home?career.team:g.opponent).toUpperCase();
-document.getElementById("awayName").textContent=(g.home?g.opponent:career.team).toUpperCase();
-document.getElementById("finalScore").textContent=us+" : "+them;
-document.getElementById("resultLabel").textContent=won?"VICTORY":"DEFEAT";
-document.getElementById("story").innerHTML=story.map(s=>`<div class="event">${s}</div>`).join("");
-show("game")
+ if(!career||career.results.length>=7)return;
+ const g=career.schedule[career.results.length];
+ const userBase=getTeam(career.team),oppBase=getTeam(g.opponent);
+ const userTeam=teamStrengths(career.team,true),oppTeam=teamStrengths(g.opponent,false);
+ const story=[];
+ let user,opp;
+ if(g.home){
+  user=simulateTeamGame(userTeam,oppTeam,story,"Your offense",true);
+  opp=simulateTeamGame(oppTeam,userTeam,story,"Opponent offense",false);
+ }else{
+  opp=simulateTeamGame(oppTeam,userTeam,story,"Opponent offense",false);
+  user=simulateTeamGame(userTeam,oppTeam,story,"Your offense",true);
+ }
+ let us=user.points,them=opp.points;
+ if(us===them){
+  if(Math.random()<.5)us+=3;else them+=3;
+  story.push("OVERTIME: a late scoring drive breaks the tie.");
+ }
+ const won=us>them;
+ story.unshift(`MATCHUP: your offense vs their defense — ${userTeam.off} attack rating, opposing defense ${oppTeam.def}.`);
+ story.unshift(`MATCHUP: their offense vs your defense — ${oppTeam.off} attack rating, your defense ${userTeam.def}.`);
+ story.push(`TOTAL YARDS: your team ${user.totalYards}; opponent ${opp.totalYards}.`);
+ story.push(`SCORING: your team ${user.td} touchdowns and ${user.fg} field goals; opponent ${opp.td} touchdowns and ${opp.fg} field goals.`);
+ story.push(`TURNOVERS: your team ${user.turnovers}; opponent ${opp.turnovers}.`);
+ const injured=maybeInjury();
+ if(injured)story.push(`INJURY REPORT: ${injured.name} (${injured.pos}) is out for ${injured.injured} week(s).`);
+ const mvp=career.roster.filter(p=>p.starter&&!p.injured).sort((a,b)=>b.rating-a.rating)[0]||career.roster[0];
+ story.push(`PLAYER OF THE GAME: ${mvp.name}, ${mvp.pos} — rating ${mvp.rating}.`);
+ career.results.push({week:g.week,opponent:g.opponent,home:g.home,scoreFor:us,scoreAgainst:them,won,userYards:user.totalYards,userTO:user.turnovers,mvp:mvp.name});
+ userBase.pf+=us;userBase.pa+=them;oppBase.pf+=them;oppBase.pa+=us;
+ if(won){userBase.w++;oppBase.l++}else{userBase.l++;oppBase.w++}
+ career.cash=Math.max(0,career.cash+3-userTeam.off*.005);
+ career.roster.forEach(p=>{if(p.injured>0)p.injured--});
+ career.week=career.results.length+1;
+ save();renderDash();
+ document.getElementById("gameWeek").textContent="WEEK "+g.week;
+ const homeName=g.home?career.team:g.opponent;
+ const awayName=g.home?g.opponent:career.team;
+ document.getElementById("homeName").textContent=homeName.toUpperCase();
+ document.getElementById("awayName").textContent=awayName.toUpperCase();
+
+ // Correct scoreboard order: home team first, away team second.
+ const homeScore=g.home?us:them;
+ const awayScore=g.home?them:us;
+ document.getElementById("finalScore").textContent=`${homeScore} : ${awayScore}`;
+
+ document.getElementById("resultLabel").textContent=won?"VICTORY":"DEFEAT";
+ document.getElementById("userYards").textContent=user.totalYards;
+ document.getElementById("userTO").textContent=user.turnovers;
+ document.getElementById("mvpRating").textContent=mvp.rating;
+ document.getElementById("story").innerHTML=story.map(s=>`<div class="event">${s}</div>`).join("");
+ show("game");
 }
-function showSchedule(){document.getElementById("scheduleList").innerHTML=career.schedule.map((g,i)=>{let r=career.results[i];return `<div class="rowitem"><div><div class="tag">WEEK ${g.week} · ${g.home?"HOME":"AWAY"}</div><strong>${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}</strong></div><div>${r?`<span class="score">${r.scoreFor}–${r.scoreAgainst}</span><div class="tag">${r.won?"WIN":"LOSS"}</div>`:"<span class='tag'>UPCOMING</span>"}</div></div>`}).join("");show("schedule")}
-function showStandings(){document.getElementById("standingsList").innerHTML='<div class="rowitem tag"><span>FRANCHISE</span><span>W-L · DIFF</span></div>'+ranked().map((t,i)=>`<div class="rowitem"><strong>${i+1}. ${t.name}${t.name===career.team?" ★":""}</strong><span>${t.w}-${t.l} · ${t.pf-t.pa>0?"+":""}${t.pf-t.pa}</span></div>`).join("");show("standings")}
-function showRoster(){let t=team(career.team);document.getElementById("rosterList").innerHTML=[["Quarterback",t.qb],["Passing",t.pass],["Rushing",t.run],["Offensive line",t.ol],["Pass defense",t.passD],["Run defense",t.runD]].map(p=>`<div class="rowitem"><span>${p[0]}</span><strong class="score">${p[1]}</strong></div>`).join("");show("roster")}
-if(career&&career.teams&&career.schedule&&career.results)renderDash();
+function renderInitial(){
+ if(career&&career.version===6){
+  career.roster.forEach(p=>{if(typeof p.injured!=="number")p.injured=0});
+  renderDash();
+ }
+}
+renderInitial();
 </script>
-</body></html>
+</body>
+</html>
