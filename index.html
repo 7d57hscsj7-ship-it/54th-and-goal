@@ -5,296 +5,326 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B0F0D">
-<title>54TH &amp; GOAL — Emerald Prestige</title>
+<title>54TH &amp; GOAL — Season Mode</title>
 <style>
-:root{--bg:#0B0F0D;--panel:#131A16;--panel2:#18221C;--forest:#17382D;--sage:#426657;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830;--ease:cubic-bezier(.2,.75,.25,1)}
+:root{--bg:#0B0F0D;--panel:#131A16;--forest:#17382D;--silver:#B9C6BE;--white:#F0F1EC;--muted:#929D96;--line:#2B3830;--ease:cubic-bezier(.2,.75,.25,1)}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.01em}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{background:radial-gradient(ellipse at 50% -20%,#20372b 0%,transparent 50%),var(--bg)}
-button,input,select{font:inherit}
-button{cursor:pointer;color:inherit}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
-#app{width:100%;max-width:560px;min-height:100svh;margin:auto;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);position:relative;overflow:hidden}
-.screen{display:none;min-height:calc(100svh - 20px);animation:screenIn .55s var(--ease) both}
+button,input,select{font:inherit}button{cursor:pointer;color:inherit}
+#app{width:100%;max-width:600px;min-height:100svh;margin:auto;padding:env(safe-area-inset-top) 17px env(safe-area-inset-bottom);overflow:hidden}
+.screen{display:none;min-height:calc(100svh - 20px);animation:screenIn .4s var(--ease) both}
 .screen.active{display:flex;flex-direction:column}
-@keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--silver);font-weight:700}
+@keyframes screenIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);font-weight:750}
 .muted{color:var(--muted)}
-.wordmark{font-size:11px;letter-spacing:.32em;color:var(--silver);text-transform:uppercase}
-.logo-mark{width:78px;height:78px;border:1px solid #65786b;transform:rotate(45deg);display:grid;place-items:center;margin:0 auto 28px;background:linear-gradient(135deg,#26392d,#0b100d 65%);box-shadow:0 10px 35px #0008,inset 0 0 0 4px #111913}
-.logo-mark span{transform:rotate(-45deg);font-weight:950;font-size:23px;letter-spacing:-.08em;color:var(--silver)}
-.topline{display:flex;align-items:center;justify-content:space-between;padding:22px 0 12px}
-.back{background:none;border:0;color:var(--silver);font-size:11px;letter-spacing:.12em;padding:10px 0;text-transform:uppercase}
-.home-hero{margin:auto 0;position:relative;padding:38px 24px;border:1px solid var(--line);border-radius:4px;background:linear-gradient(160deg,#1b2a21,#101512 62%,#0c100d);overflow:hidden}
-.home-hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 40px,#ffffff03 41px 42px);pointer-events:none}
-.home-hero h2{font-size:clamp(27px,7vw,40px);line-height:1.02;letter-spacing:-.04em;margin:16px 0}
-.home-hero p{font-size:13px;line-height:1.7;color:#B2BCB5;max-width:300px}
-.hero-light{position:absolute;width:240px;height:160px;right:-100px;top:-75px;background:#54776325;filter:blur(22px);border-radius:50%;animation:glowPulse 5s ease-in-out infinite alternate}
-@keyframes glowPulse{to{transform:translate(-35px,25px) scale(1.25);opacity:.65}}
-.btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 17px;margin:8px 0;border-radius:3px;border:1px solid var(--line);background:linear-gradient(110deg,#19211c,#111612);font-size:11px;letter-spacing:.12em;font-weight:800;text-transform:uppercase;transition:background .25s,border-color .25s,transform .25s}
+.wordmark{font-size:10px;letter-spacing:.28em;color:var(--silver);text-transform:uppercase}
+.topline{display:flex;align-items:center;justify-content:space-between;padding:20px 0 13px}
+.back{background:none;border:0;color:var(--silver);font-size:10px;letter-spacing:.12em;padding:10px 0;text-transform:uppercase}
+.btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 16px;margin:7px 0;border-radius:3px;border:1px solid var(--line);background:linear-gradient(110deg,#19211c,#111612);font-size:10px;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
 .btn:active{transform:scale(.99)}
-.btn.primary{background:linear-gradient(110deg,#284638,#193528);border-color:#607b69;color:#F0F1EC;box-shadow:inset 0 1px #ffffff10}
-.btn .arrow{color:var(--silver);font-size:18px}
+.btn.primary{background:linear-gradient(110deg,#284638,#193528);border-color:#607b69}
 .btn.subtle{background:transparent;color:var(--muted)}
-.home-footer{text-align:center;font-size:9px;letter-spacing:.22em;color:#7F8B83;padding:22px 0 12px}
-.intro-screen{position:relative;min-height:100svh!important;justify-content:space-between;padding-bottom:22px;overflow:hidden}
-.intro-visual{position:absolute;inset:0;overflow:hidden;background:#0a0d0b}
-.scene-art{position:absolute;inset:-9%;opacity:0;transform:scale(1.13);background-size:cover;background-position:center;transition:opacity 1.2s ease,background-position 7s linear;animation:cameraDrift 8s ease-in-out infinite alternate}
-.intro-screen.active .scene-art{opacity:1;background-position:54% 45%}
-.scene-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#06090845 0%,#080b0966 42%,#080b09 100%),linear-gradient(90deg,#05080670,transparent 80%);pointer-events:none}
-.scene-art:before{animation:foregroundDrift 6s ease-in-out infinite alternate}
-.art-tunnel{background-image:radial-gradient(ellipse at 50% 67%,#e1e8dc 0%,#71877a 2%,transparent 23%),linear-gradient(180deg,#080b09 0%,#24372b 44%,#030504 100%)}
-.art-tunnel:before{content:"";position:absolute;inset:20% 9% 0;background:linear-gradient(90deg,#020403,#26372c 12%,#101712 22%,transparent 23% 77%,#101712 78%,#26372c 88%,#020403);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);border-top:2px solid #a6b7a9}
-.art-players{background-image:radial-gradient(ellipse at 50% 50%,#c2c9bf66,transparent 32%),linear-gradient(180deg,#17231b,#050706)}
-.art-players:before{content:"";position:absolute;left:14%;right:14%;bottom:-6%;height:62%;background:linear-gradient(90deg,#15251c 0 28%,#090e0b 28% 34%,#1c2d22 34% 65%,#080c09 65% 72%,#17251d 72%);clip-path:polygon(22% 0,78% 0,100% 100%,0 100%);filter:drop-shadow(0 0 20px #000)}
-.art-coach{background-image:radial-gradient(ellipse at 50% 45%,#9faea355,transparent 28%),linear-gradient(180deg,#1b2420,#070a08)}
-.art-coach:before{content:"";position:absolute;left:42%;bottom:13%;width:16%;height:43%;background:linear-gradient(90deg,#111914,#3a4a3d,#080c09);clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);border-radius:40% 40% 0 0}
-.art-city{background-image:radial-gradient(ellipse at 50% 80%,#78998277,transparent 30%),linear-gradient(180deg,#090e0d,#1b2a23 65%,#050706)}
-.art-city:before{content:"";position:absolute;left:0;right:0;bottom:20%;height:30%;background:repeating-linear-gradient(90deg,#080d0a 0 5%,#526457 5.3% 6%,#0b110d 6.5% 11%);clip-path:polygon(0 60%,6% 60%,6% 25%,12% 25%,12% 48%,20% 48%,20% 10%,28% 10%,28% 40%,37% 40%,37% 0,44% 0,44% 47%,52% 47%,52% 18%,62% 18%,62% 53%,73% 53%,73% 25%,82% 25%,82% 50%,91% 50%,91% 5%,96% 5%,96% 60%,100% 60%,100% 100%,0 100%)}
-.art-you{background-image:radial-gradient(ellipse at 50% 66%,#81938755,transparent 25%),linear-gradient(180deg,#101814,#050706)}
-.art-you:before{content:"";position:absolute;left:36%;bottom:12%;width:28%;height:47%;background:linear-gradient(90deg,#080c09,#394a3d 48%,#070a08);clip-path:polygon(36% 0,64% 0,72% 14%,100% 28%,90% 100%,10% 100%,0 28%,28% 14%)}
-.art-final{background:radial-gradient(ellipse at 50% 60%,#3a6048 0%,#101b14 30%,#060907 72%)}
-.art-final:before{content:"54";position:absolute;inset:25% 0 auto;text-align:center;font-size:clamp(140px,50vw,240px);font-weight:1000;letter-spacing:-.1em;color:#c5cec6;text-shadow:0 3px #56645b,0 8px 30px #000;opacity:.2}
-@keyframes cameraDrift{0%{transform:scale(1.08) translate3d(-1%,1%,0)}100%{transform:scale(1.24) translate3d(1%,-1%,0)}}
-@keyframes foregroundDrift{0%{translate:-1% 0}100%{translate:1% -1%}}
-.intro-content{z-index:2;position:relative;margin:auto 0;padding:16vh 5px 12vh;display:flex;flex-direction:column;justify-content:center;min-height:72svh}
-.intro-kicker{font-size:10px;letter-spacing:.3em;color:var(--silver);text-transform:uppercase;margin-bottom:22px;opacity:0;transform:translateY(12px)}
-.intro-title{font-size:clamp(42px,12vw,67px);line-height:.94;letter-spacing:-.055em;font-weight:950;text-transform:uppercase;margin:0;max-width:440px;opacity:0;transform:translateY(18px)}
-.intro-title .accent{color:#AFC3B5}
-.intro-copy{font-size:11px;line-height:1.8;letter-spacing:.18em;text-transform:uppercase;color:#C0C8C2;max-width:245px;margin-top:22px;opacity:0;transform:translateY(12px)}
-.intro-content.reveal .intro-kicker{animation:reveal .7s .1s var(--ease) forwards}
-.intro-content.reveal .intro-title{animation:titleReveal 1s .25s var(--ease) forwards}
-.intro-content.reveal .intro-copy{animation:reveal .8s .65s var(--ease) forwards}
-@keyframes reveal{to{opacity:1;transform:translateY(0)}}
-@keyframes titleReveal{0%{opacity:0;transform:translateY(24px);letter-spacing:.02em}100%{opacity:1;transform:translateY(0);letter-spacing:-.055em}}
-.intro-controls{z-index:3;position:relative;padding:10px 0 20px}
-.progress{display:flex;gap:5px;margin-bottom:18px}
-.progress span{height:2px;background:#ffffff35;flex:1;transition:background .3s}
-.progress span.done{background:var(--silver)}
-.intro-actions{display:flex;align-items:center;gap:14px}
-.intro-actions .btn{margin:0;flex:1}
-.skip{border:0;background:none;color:#aab4ad;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:12px 0}
-.form-title{font-size:38px;line-height:1;letter-spacing:-.05em;margin:25px 0 12px}
-.field-label{display:block;font-size:10px;letter-spacing:.17em;color:var(--silver);text-transform:uppercase;font-weight:700;margin:24px 0 8px}
-.field{width:100%;background:#0d120f;border:1px solid #354238;border-radius:3px;color:var(--white);padding:15px 13px}
-.field::placeholder{color:#667168}
-.hint{font-size:11px;color:var(--muted);line-height:1.5}
-.error{display:none;color:#e3b7ae;font-size:12px;margin-top:9px}
-.error.show{display:block}
-.screen-footer{margin-top:auto;padding:30px 0 16px;color:#77847b;font-size:9px;letter-spacing:.2em;text-align:center}
-.dash-head{padding:20px 0 22px}
-.dash-title{font-size:31px;letter-spacing:-.04em;margin:13px 0 4px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}
-.stat{background:linear-gradient(145deg,#18221c,#101511);border:1px solid var(--line);padding:16px 10px;border-radius:3px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.arrow{color:var(--silver);font-size:17px}
+.logo{width:68px;height:68px;border:1px solid #65786b;transform:rotate(45deg);display:grid;place-items:center;margin:5px auto 25px;background:linear-gradient(135deg,#26392d,#0b100d 65%);box-shadow:0 10px 35px #0008,inset 0 0 0 4px #111913}
+.logo span{transform:rotate(-45deg);font-weight:950;font-size:20px;letter-spacing:-.08em;color:var(--silver)}
+.hero{margin:auto 0;padding:30px 22px;border:1px solid var(--line);background:linear-gradient(160deg,#1b2a21,#101512 62%,#0c100d);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(30px,8vw,43px);line-height:.99;letter-spacing:-.055em;margin:15px 0}
+.hero p{font-size:12px;line-height:1.75;color:#B2BCB5}
+.home-footer,.foot{text-align:center;font-size:9px;letter-spacing:.2em;color:#7F8B83;padding:22px 0 12px}
+.field{width:100%;background:#0d120f;border:1px solid #354238;border-radius:3px;color:var(--white);padding:14px 12px}
+.field-label{display:block;font-size:10px;letter-spacing:.16em;color:var(--silver);text-transform:uppercase;font-weight:700;margin:22px 0 8px}
+.form-title{font-size:36px;line-height:1;letter-spacing:-.05em;margin:22px 0 12px}
+.panel{border:1px solid var(--line);background:linear-gradient(145deg,#17211a,#101511);padding:17px;margin:8px 0}
+.panel h3{font-size:11px;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase}
+.panel p{font-size:12px;color:#a8b3ab;line-height:1.65;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
+.stat{background:linear-gradient(145deg,#18221c,#101511);border:1px solid var(--line);padding:13px 8px}
 .stat strong{font-size:23px;display:block;color:var(--silver);letter-spacing:-.04em}
-.stat small{font-size:8px;letter-spacing:.15em;color:var(--muted)}
-.panel{border:1px solid var(--line);background:linear-gradient(145deg,#17211a,#101511);padding:19px;margin:10px 0;border-radius:3px}
-.panel h3{font-size:11px;letter-spacing:.16em;margin:0 0 12px;text-transform:uppercase}
-.panel p{font-size:12px;color:#a8b3ab;line-height:1.7;margin:0}
-.player{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
-.player:last-child{border-bottom:0}
-.player strong{display:block;font-size:13px}
-.player small{display:block;font-size:10px;color:var(--muted);margin-top:5px}
-.ovr{font-size:19px;color:var(--silver);font-weight:800}
-.navgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.navgrid .btn{margin:0;font-size:10px;padding:15px 12px}
-.settings-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 0;border-bottom:1px solid var(--line);font-size:12px}
-.pill{font-size:9px;letter-spacing:.1em;color:var(--silver);border:1px solid #516457;padding:6px 8px;text-transform:uppercase}
-@media(prefers-reduced-motion:reduce){.scene-art,.scene-art:before,.hero-light{animation:none!important}.intro-content.reveal .intro-kicker,.intro-content.reveal .intro-title,.intro-content.reveal .intro-copy{animation-duration:.01ms}}
+.stat small{font-size:8px;letter-spacing:.12em;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.grid2 .btn{margin:0;padding:14px 10px}
+.recordrow,.game-row,.standing-row{display:grid;align-items:center;gap:8px;padding:13px 0;border-bottom:1px solid var(--line)}
+.game-row{grid-template-columns:54px 1fr auto}
+.recordrow{grid-template-columns:1fr auto}
+.standing-row{grid-template-columns:25px 1fr 28px 28px 42px;font-size:11px}
+.standing-row.header{color:var(--muted);font-size:8px;letter-spacing:.1em;text-transform:uppercase}
+.badge{font-size:9px;letter-spacing:.1em;border:1px solid #4d6254;color:var(--silver);padding:5px 7px;text-transform:uppercase}
+.tag{font-size:9px;color:var(--muted);letter-spacing:.08em}
+.teamname{font-weight:800;font-size:12px}
+.score{font-size:16px;font-weight:900;letter-spacing:-.03em}
+.win{color:#c7d7cb}.loss{color:#d4a9a1}
+.game-card{padding:17px;border:1px solid var(--line);background:linear-gradient(145deg,#17211a,#101511);margin:10px 0}
+.matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;text-align:center;margin:20px 0}
+.matchup .team{font-size:12px;font-weight:800;line-height:1.4}
+.matchup .team small{display:block;color:var(--muted);font-size:9px;font-weight:500;margin-top:6px}
+.vs{color:var(--muted);font-size:10px;letter-spacing:.15em}
+.bigscore{font-size:43px;font-weight:950;letter-spacing:-.06em;text-align:center}
+.timeline{font-size:11px;line-height:1.7;color:#aeb9b1;padding:9px 0;border-bottom:1px solid var(--line)}
+.timeline:last-child{border:0}
+.player{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.player:last-child{border:0}
+.player strong{display:block;font-size:12px}
+.player small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+.ovr{font-size:18px;color:var(--silver);font-weight:850}
+.notice{font-size:11px;color:var(--muted);line-height:1.6;padding:10px 0}
+.empty{padding:25px 8px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}
+
+/* Cinematic intro */
+.intro{position:relative;min-height:100svh!important;justify-content:space-between;overflow:hidden;padding-bottom:18px}
+.intro-visual{position:absolute;inset:0;background:#070a08;overflow:hidden}
+.scene{position:absolute;inset:-10%;opacity:0;background-size:cover;animation:cam 8s ease-in-out infinite alternate;transition:opacity 1s}
+.intro.active .scene{opacity:1}
+.scene:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#05070645,#080b0980 55%,#080b09 100%)}
+.scene.tunnel{background-image:radial-gradient(ellipse at 50% 66%,#dce4d8 0%,#708578 2%,transparent 24%),linear-gradient(180deg,#080b09,#24372b 45%,#030504)}
+.scene.tunnel:before{content:"";position:absolute;inset:20% 8% 0;background:linear-gradient(90deg,#020403,#26372c 12%,#101712 22%,transparent 23% 77%,#101712 78%,#26372c 88%,#020403);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+.scene.players{background-image:radial-gradient(ellipse at 50% 48%,#d2d9cf55,transparent 30%),linear-gradient(180deg,#17231b,#050706)}
+.scene.players:before{content:"";position:absolute;left:13%;right:13%;bottom:-5%;height:62%;background:linear-gradient(90deg,#15251c,#090e0b 30%,#1c2d22 50%,#080c09 72%,#17251d);clip-path:polygon(22% 0,78% 0,100% 100%,0 100%)}
+.scene.staff{background-image:radial-gradient(ellipse at 50% 42%,#9faea355,transparent 28%),linear-gradient(180deg,#1b2420,#070a08)}
+.scene.staff:before{content:"";position:absolute;left:42%;bottom:13%;width:16%;height:43%;background:linear-gradient(90deg,#111914,#3a4a3d,#080c09);clip-path:polygon(25% 0,75% 0,100% 100%,0 100%)}
+.scene.city{background-image:radial-gradient(ellipse at 50% 80%,#78998277,transparent 30%),linear-gradient(180deg,#090e0d,#1b2a23 65%,#050706)}
+.scene.city:before{content:"";position:absolute;left:0;right:0;bottom:20%;height:30%;background:repeating-linear-gradient(90deg,#080d0a 0 5%,#526457 5.3% 6%,#0b110d 6.5% 11%);clip-path:polygon(0 60%,6% 60%,6% 25%,12% 25%,12% 48%,20% 48%,20% 10%,28% 10%,28% 40%,37% 40%,37% 0,44% 0,44% 47%,52% 47%,52% 18%,62% 18%,62% 53%,73% 53%,73% 25%,82% 25%,82% 50%,91% 50%,91% 5%,96% 5%,96% 60%,100% 60%,100% 100%,0 100%)}
+.scene.you{background-image:radial-gradient(ellipse at 50% 66%,#81938755,transparent 25%),linear-gradient(180deg,#101814,#050706)}
+.scene.you:before{content:"";position:absolute;left:36%;bottom:12%;width:28%;height:47%;background:linear-gradient(90deg,#080c09,#394a3d 48%,#070a08);clip-path:polygon(36% 0,64% 0,72% 14%,100% 28%,90% 100%,10% 100%,0 28%,28% 14%)}
+.scene.final{background:radial-gradient(ellipse at 50% 60%,#3a6048 0%,#101b14 30%,#060907 72%)}
+.scene.final:before{content:"54";position:absolute;inset:25% 0 auto;text-align:center;font-size:clamp(140px,50vw,240px);font-weight:1000;color:#c5cec6;opacity:.18}
+@keyframes cam{0%{transform:scale(1.08) translate3d(-1%,1%,0)}100%{transform:scale(1.24) translate3d(1%,-1%,0)}}
+.intro-content{position:relative;z-index:2;margin:auto 0;padding:13vh 5px 10vh;min-height:70svh;display:flex;flex-direction:column;justify-content:center}
+.ikicker,.ititle,.icopy{opacity:0;transform:translateY(16px)}
+.ikicker{font-size:10px;letter-spacing:.3em;color:var(--silver);margin-bottom:22px}
+.ititle{font-size:clamp(42px,12vw,67px);line-height:.94;letter-spacing:-.055em;font-weight:950;margin:0}
+.ititle .accent{color:#AFC3B5}
+.icopy{font-size:11px;line-height:1.8;letter-spacing:.16em;text-transform:uppercase;color:#C0C8C2;max-width:250px;margin-top:22px}
+.reveal .ikicker{animation:reveal .7s .1s var(--ease) forwards}
+.reveal .ititle{animation:reveal .9s .3s var(--ease) forwards}
+.reveal .icopy{animation:reveal .8s .65s var(--ease) forwards}
+@keyframes reveal{to{opacity:1;transform:translateY(0)}}
+.intro-controls{z-index:3;position:relative}
+.progress{display:flex;gap:5px;margin-bottom:15px}
+.progress span{height:2px;background:#ffffff35;flex:1}
+.progress span.done{background:var(--silver)}
+.intro-actions{display:flex;gap:10px}
+.intro-actions .btn{margin:0}
+.skip{border:0;background:none;color:#aab4ad;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:12px 0}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <main id="app">
+
 <section id="home" class="screen active">
-  <div class="topline"><span class="wordmark">Front Office Simulation</span><span class="eyebrow">EST. 54</span></div>
-  <div class="home-hero"><div class="hero-light"></div><div class="logo-mark"><span>54TH</span></div><div class="eyebrow">A NEW ERA OF FRANCHISE</div><h2>YOUR FRANCHISE.<br><span style="color:var(--silver)">YOUR LEGACY.</span></h2><p>Every decision shapes the future. Build your roster, lead your organization and earn your place in history.</p></div>
-  <button class="btn primary" onclick="startCareer()"><span>Start a New Career</span><span class="arrow">↗</span></button>
-  <button class="btn" onclick="loadCareer()"><span>Load Career</span><span class="arrow">→</span></button>
-  <button class="btn subtle" onclick="show('settings')"><span>Settings</span><span class="arrow">→</span></button>
-  <button class="btn subtle" onclick="show('credits')"><span>Credits</span><span class="arrow">→</span></button>
-  <div class="home-footer">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
+<div class="topline"><span class="wordmark">Front Office Simulation</span><span class="eyebrow">SEASON MODE</span></div>
+<div class="hero"><div class="logo"><span>54TH</span></div><div class="eyebrow">A NEW ERA OF FRANCHISE</div><h1>YOUR FRANCHISE.<br><span style="color:var(--silver)">YOUR LEGACY.</span></h1><p>Build your roster. Prepare for Sunday. Make every decision count.</p></div>
+<button class="btn primary" onclick="startCareer()"><span>Start a New Career</span><span class="arrow">↗</span></button>
+<button class="btn" onclick="loadCareer()"><span>Load Career</span><span class="arrow">→</span></button>
+<button class="btn subtle" onclick="show('credits')"><span>About the Game</span><span class="arrow">→</span></button>
+<div class="home-footer">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
 </section>
 
-<section id="intro" class="screen intro-screen">
-  <div class="intro-visual"><div id="sceneArt" class="scene-art art-tunnel"></div></div>
-  <div class="topline" style="z-index:3"><span class="wordmark">54TH &amp; GOAL</span><button class="skip" onclick="skipIntro()">Skip intro ↗</button></div>
-  <div class="intro-content reveal" id="introContent"><div id="introKicker" class="intro-kicker">THE OPENING STATEMENT</div><h1 id="introTitle" class="intro-title">A SEASON<br>IS MADE OF…</h1><p id="introCopy" class="intro-copy">Every moment matters. Every decision leaves a mark.</p></div>
-  <div class="intro-controls"><div class="progress" id="progress"></div><div class="intro-actions"><button class="btn" onclick="prevSlide()" style="max-width:78px;justify-content:center">←</button><button id="nextSlideBtn" class="btn primary" onclick="nextSlide()"><span>Continue</span><span class="arrow">→</span></button></div></div>
+<section id="intro" class="screen intro">
+<div class="intro-visual"><div id="scene" class="scene tunnel"></div></div>
+<div class="topline" style="z-index:3"><span class="wordmark">54TH &amp; GOAL</span><button class="skip" onclick="skipIntro()">Skip intro ↗</button></div>
+<div id="introContent" class="intro-content reveal"><div id="ikicker" class="ikicker">THE OPENING STATEMENT</div><h1 id="ititle" class="ititle">A SEASON<br>IS MADE OF…</h1><p id="icopy" class="icopy">Every moment matters. Every decision leaves a mark.</p></div>
+<div class="intro-controls"><div class="progress" id="progress"></div><div class="intro-actions"><button class="btn" onclick="prevSlide()" style="max-width:75px;justify-content:center">←</button><button id="nextBtn" class="btn primary" onclick="nextSlide()"><span>Continue</span><span class="arrow">→</span></button></div></div>
 </section>
 
 <section id="create" class="screen">
-  <div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow">01 / CAREER SETUP</span></div>
-  <div class="eyebrow">TAKE THE HELM</div><h2 class="form-title">Your franchise.<br>Your decisions.</h2><p class="muted" style="font-size:13px;line-height:1.7">Every great organization starts with a leader. Tell us who you are, then choose the franchise you'll build.</p>
-  <form id="careerForm" onsubmit="createCareer(event)">
-    <label class="field-label" for="gm">General Manager Name <span style="color:var(--silver)">*</span></label><input class="field" id="gm" name="gm" maxlength="32" placeholder="Enter your name" autocomplete="nickname" required>
-    <p class="hint">Required. This name will represent you throughout your career.</p>
-    <label class="field-label" for="team">Choose your franchise</label><select class="field" id="team"><option>Portland Pines</option><option>Austin Outlaws</option><option>Brooklyn Kings</option><option>Orlando Storm</option><option>Chicago Forge</option><option>Las Vegas Vipers</option></select>
-    <p id="formError" class="error">Please enter your General Manager name to continue.</p><button class="btn primary" type="submit" style="margin-top:27px"><span>Create Franchise</span><span class="arrow">↗</span></button>
-  </form><div class="screen-footer">THE NEXT CHAPTER IS YOURS TO WRITE.</div>
+<div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow">CAREER SETUP</span></div>
+<div class="eyebrow">TAKE THE HELM</div><h2 class="form-title">Your franchise.<br>Your decisions.</h2><p class="muted" style="font-size:13px;line-height:1.7">Choose your identity and the franchise you'll lead.</p>
+<form onsubmit="createCareer(event)">
+<label class="field-label" for="gm">General Manager Name *</label><input class="field" id="gm" maxlength="32" placeholder="Enter your name" required>
+<label class="field-label" for="team">Choose your franchise</label><select class="field" id="team"><option>Portland Pines</option><option>Austin Outlaws</option><option>Brooklyn Kings</option><option>Orlando Storm</option><option>Chicago Forge</option><option>Las Vegas Vipers</option><option>San Diego Tritons</option><option>Boston Foundry</option></select>
+<button class="btn primary" type="submit" style="margin-top:25px"><span>Create Franchise</span><span class="arrow">↗</span></button>
+</form><div class="foot">YOUR STORY STARTS HERE.</div>
 </section>
 
 <section id="dash" class="screen">
-  <div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow">CAREER · YEAR 1</span></div>
-  <div class="dash-head"><div class="eyebrow">WELCOME TO THE FRONT OFFICE</div><h2 class="dash-title" id="teamName">Your Franchise</h2><div class="muted" style="font-size:12px" id="managerName">General Manager</div></div>
-  <div class="stats"><div class="stat"><strong id="record">0–0</strong><small>RECORD</small></div><div class="stat"><strong>53</strong><small>ROSTER SIZE</small></div><div class="stat"><strong>$24M</strong><small>CAP SPACE</small></div></div>
-  <div class="panel"><h3>Owner's Briefing</h3><p>Your season starts here. Make smart decisions, develop talent and build a franchise that can compete for a championship.</p></div>
-  <div class="navgrid"><button class="btn primary" onclick="show('roster')"><span>Manage Roster</span><span class="arrow">↗</span></button><button class="btn" onclick="playWeek()"><span>Play Next Week</span><span class="arrow">→</span></button><button class="btn" onclick="show('office')"><span>Front Office</span><span class="arrow">→</span></button><button class="btn" onclick="show('settings')"><span>Settings</span><span class="arrow">→</span></button></div>
-  <div class="screen-footer">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
+<div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow" id="seasonLabel">YEAR 1 · WEEK 1</span></div>
+<div style="padding:16px 0"><div class="eyebrow">WELCOME TO THE FRONT OFFICE</div><h2 id="teamTitle" style="font-size:30px;letter-spacing:-.04em;margin:10px 0 5px">Your Franchise</h2><div id="gmLabel" class="muted" style="font-size:12px">General Manager</div></div>
+<div class="stats"><div class="stat"><strong id="record">0–0</strong><small>RECORD</small></div><div class="stat"><strong id="rank">1st</strong><small>LEAGUE RANK</small></div><div class="stat"><strong id="pf">0</strong><small>PTS FOR</small></div></div>
+<div class="panel"><h3>Next Game</h3><div id="nextGame"></div><button id="playButton" class="btn primary" onclick="playNextGame()"><span id="playLabel">Prepare for Week 1</span><span class="arrow">↗</span></button></div>
+<div class="grid2"><button class="btn" onclick="showSchedule()"><span>Schedule &amp; Results</span><span class="arrow">→</span></button><button class="btn" onclick="showStandings()"><span>League Standings</span><span class="arrow">→</span></button><button class="btn" onclick="show('roster')"><span>Team Roster</span><span class="arrow">→</span></button><button class="btn" onclick="show('office')"><span>Front Office</span><span class="arrow">→</span></button></div>
+<div class="foot">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</div>
+</section>
+
+<section id="game" class="screen">
+<div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow" id="gameWeek">WEEK 1</span></div><div class="eyebrow">FINAL SCORE</div>
+<div class="game-card"><div class="matchup"><div class="team" id="homeTeam">PORTLAND PINES<small>HOME</small></div><div class="vs">VS</div><div class="team" id="awayTeam">AUSTIN OUTLAWS<small>AWAY</small></div></div><div class="bigscore" id="finalScore">— : —</div><div id="gameResult" class="eyebrow" style="text-align:center;margin-top:8px">GAME SUMMARY</div></div>
+<div class="panel"><h3>Game Story</h3><div id="gameStory"></div></div><button class="btn primary" onclick="show('dash')"><span>Return to Front Office</span><span class="arrow">→</span></button>
+</section>
+
+<section id="schedule" class="screen">
+<div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">REGULAR SEASON</span></div><div class="eyebrow">THE ROAD AHEAD</div><h2 class="form-title">Schedule &amp; Results</h2><div id="scheduleList" class="panel"></div><div class="notice">This prototype uses a 7-game regular season so you can test the complete season loop. Results are saved on this device.</div>
+</section>
+
+<section id="standings" class="screen">
+<div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">LEAGUE TABLE</span></div><div class="eyebrow">EVERY WIN COUNTS</div><h2 class="form-title">Standings</h2><div class="panel" id="standingsList"></div><div class="notice">Rankings update after every completed game. Tiebreaker: point differential.</div>
 </section>
 
 <section id="roster" class="screen">
-  <div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">ROSTER / 53</span></div><div class="eyebrow">PERSONNEL DEPARTMENT</div><h2 class="form-title">The Roster</h2><p class="muted" style="font-size:12px">A first look at the leaders of your fictional franchise.</p>
-  <div class="panel"><div class="player"><div><strong>Marcus Reed · QB</strong><small>Field General · Age 27</small></div><span class="ovr">84</span></div><div class="player"><div><strong>Jalen Brooks · WR</strong><small>Deep Threat · Age 25</small></div><span class="ovr">91</span></div><div class="player"><div><strong>Caleb Stone · EDGE</strong><small>Pass Rusher · Age 28</small></div><span class="ovr">87</span></div></div>
-  <div class="panel"><h3>Team Needs</h3><p>Offensive line · Linebacker depth · Backup quarterback</p></div><button class="btn" onclick="show('dash')"><span>Return to Dashboard</span><span class="arrow">→</span></button>
+<div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">PERSONNEL</span></div><div class="eyebrow">TEAM ROSTER</div><h2 class="form-title">The Core</h2><p class="muted" style="font-size:12px;line-height:1.6">Your team's core ratings influence each matchup. Full roster management will come in a later version.</p><div class="panel" id="rosterList"></div><div class="panel"><h3>Team identity</h3><p id="teamProfile">Balanced roster</p></div>
 </section>
 
 <section id="office" class="screen">
-  <div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">OPERATIONS</span></div><div class="eyebrow">FRONT OFFICE</div><h2 class="form-title">The standard<br>is set.</h2>
-  <div class="panel"><h3>Owner's Mandate</h3><p>Finish with a winning record and build a competitive roster without sacrificing the future.</p></div><div class="panel"><h3>Season Objective</h3><p>Reach the playoffs. Develop young talent. Build your legacy.</p></div><div class="panel"><h3>Long-term vision</h3><p>Establish a winning culture, manage the cap responsibly and make decisions that keep the franchise competitive for years.</p></div>
-  <button class="btn" onclick="show('dash')"><span>Return to Dashboard</span><span class="arrow">→</span></button>
-</section>
-
-<section id="settings" class="screen">
-  <div class="topline"><button class="back" onclick="backFromSettings()">← Back</button><span class="eyebrow">PREFERENCES</span></div><div class="eyebrow">SETTINGS</div><h2 class="form-title">Your experience.</h2>
-  <div class="panel"><div class="settings-row"><span>Visual identity</span><span class="pill">Emerald Prestige</span></div><div class="settings-row"><span>Replay opening cinematic</span><button class="btn" style="width:auto;margin:0;padding:9px 12px" onclick="replayIntro()">Replay ↗</button></div><div class="settings-row"><span>Local career save</span><span class="pill">On device</span></div><p style="margin-top:14px">Your career is saved in this browser on this device. Clearing browser data may remove it.</p></div>
-  <button class="btn" onclick="backFromSettings()"><span>Return</span><span class="arrow">→</span></button>
+<div class="topline"><button class="back" onclick="show('dash')">← Dashboard</button><span class="eyebrow">OPERATIONS</span></div><div class="eyebrow">FRONT OFFICE</div><h2 class="form-title">The standard<br>is set.</h2>
+<div class="panel"><h3>Owner's Mandate</h3><p>Finish the season with a competitive record and build a franchise that can sustain success.</p></div>
+<div class="panel"><h3>Current objective</h3><p id="objective">Win your next game and establish a winning culture.</p></div>
+<div class="panel"><h3>GM report</h3><p id="gmReport">Your season is about to begin. The roster will be judged by results.</p></div>
+<button class="btn" onclick="show('dash')"><span>Return to Dashboard</span><span class="arrow">→</span></button>
 </section>
 
 <section id="credits" class="screen">
-  <div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow">THE IDEA</span></div><div style="margin:auto 0;text-align:center;padding:45px 10px"><div class="logo-mark"><span>54TH</span></div><div class="eyebrow">54TH &amp; GOAL</div><h2 class="form-title">The 54th<br>is you.</h2><p class="muted" style="font-size:13px;line-height:1.8">53 players. One coaching staff. One franchise. One person behind every decision.</p><p class="wordmark" style="margin-top:30px">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</p></div>
+<div class="topline"><button class="back" onclick="show('home')">← Main menu</button><span class="eyebrow">THE IDEA</span></div>
+<div style="margin:auto 0;text-align:center;padding:35px 10px"><div class="logo"><span>54TH</span></div><div class="eyebrow">54TH &amp; GOAL</div><h2 class="form-title">The 54th<br>is you.</h2><p class="muted" style="font-size:13px;line-height:1.8">53 players. One coaching staff. One franchise. One person behind every decision.</p><p class="wordmark" style="margin-top:25px">YOUR FRANCHISE. YOUR CALL. YOUR LEGACY.</p></div>
 </section>
 </main>
 
 <script>
-const slides=[
- {art:'art-tunnel',kicker:'THE OPENING STATEMENT',title:'A SEASON<br>IS MADE OF…',copy:'Every moment matters. Every decision leaves a mark.'},
- {art:'art-players',kicker:'THE PEOPLE ON THE FIELD',title:'53 <span class="accent">PLAYERS.</span>',copy:'One roster. Fifty-three different stories.'},
- {art:'art-coach',kicker:'THE PLAN BEHIND THE GAME',title:'ONE<br>COACHING STAFF.',copy:'One game plan. One shared vision.'},
- {art:'art-city',kicker:'MORE THAN A TEAM',title:'ONE<br><span class="accent">FRANCHISE.</span>',copy:'A city. A legacy. A dream.'},
- {art:'art-you',kicker:'THE PERSON BEHIND EVERY CALL',title:'ONE PERSON.<br><span class="accent">YOU.</span>',copy:'Every decision starts with the person willing to make it.'},
- {art:'art-final',kicker:'YOUR STORY STARTS HERE',title:'YOU.<br><span class="accent">THE 54TH.</span>',copy:'Your franchise. Your call. Your legacy.'}
+const TEAMS=[
+{name:'Portland Pines',off:82,def:79,qb:84,style:'Balanced roster with a reliable passing game.'},
+{name:'Austin Outlaws',off:85,def:75,qb:88,style:'High-powered offense, vulnerable defense.'},
+{name:'Brooklyn Kings',off:78,def:86,qb:80,style:'Defensive identity and physical football.'},
+{name:'Orlando Storm',off:81,def:82,qb:82,style:'Well-rounded team with few major weaknesses.'},
+{name:'Chicago Forge',off:76,def:88,qb:78,style:'Elite defense that keeps games close.'},
+{name:'Las Vegas Vipers',off:87,def:77,qb:89,style:'Explosive offense built around its quarterback.'},
+{name:'San Diego Tritons',off:83,def:81,qb:83,style:'Athletic roster with balanced potential.'},
+{name:'Boston Foundry',off:79,def:80,qb:81,style:'Young team still searching for an identity.'}
 ];
 
-let slideIndex=0,career=null,introTimer=null;
-const INTRO_DURATION=6500;
-try{career=JSON.parse(localStorage.getItem('f54')||'null')}catch(e){}
+const SLIDES=[
+{art:'tunnel',kicker:'THE OPENING STATEMENT',title:'A SEASON<br>IS MADE OF…',copy:'Every moment matters. Every decision leaves a mark.'},
+{art:'players',kicker:'THE PEOPLE ON THE FIELD',title:'53 <span class="accent">PLAYERS.</span>',copy:'One roster. Fifty-three different stories.'},
+{art:'staff',kicker:'THE PLAN BEHIND THE GAME',title:'ONE<br>COACHING STAFF.',copy:'One game plan. One shared vision.'},
+{art:'city',kicker:'MORE THAN A TEAM',title:'ONE<br><span class="accent">FRANCHISE.</span>',copy:'A city. A legacy. A dream.'},
+{art:'you',kicker:'THE PERSON BEHIND EVERY CALL',title:'ONE PERSON.<br><span class="accent">YOU.</span>',copy:'Every decision starts with the person willing to make it.'},
+{art:'final',kicker:'YOUR STORY STARTS HERE',title:'YOU.<br><span class="accent">THE 54TH.</span>',copy:'Your franchise. Your call. Your legacy.'}
+];
 
-function stopIntroTimer(){
- if(introTimer!==null){clearTimeout(introTimer);introTimer=null}
-}
+let career=null,slideIndex=0,introTimer=null;
+try{career=JSON.parse(localStorage.getItem('f54')||'null')}catch(e){career=null}
 
-function show(id){
- if(id!=='intro')stopIntroTimer();
- document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
- const el=document.getElementById(id);
- if(el)el.classList.add('active');
- window.scrollTo(0,0);
-}
-
-function startCareer(){
- stopIntroTimer();
- slideIndex=0;
- renderSlide();
- show('intro');
-}
+function stopIntro(){if(introTimer){clearTimeout(introTimer);introTimer=null}}
+function show(id){if(id!=='intro')stopIntro();document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');window.scrollTo(0,0)}
+function startCareer(){stopIntro();slideIndex=0;renderSlide();show('intro')}
 
 function renderSlide(){
- stopIntroTimer();
- const s=slides[slideIndex];
- const art=document.getElementById('sceneArt');
- const content=document.getElementById('introContent');
- art.className='scene-art '+s.art;
- content.classList.remove('reveal');
- void content.offsetWidth;
- document.getElementById('introKicker').textContent=s.kicker;
- document.getElementById('introTitle').innerHTML=s.title;
- document.getElementById('introCopy').textContent=s.copy;
- content.classList.add('reveal');
- document.getElementById('progress').innerHTML=slides.map((_,i)=>`<span class="${i<=slideIndex?'done':''}"></span>`).join('');
- document.getElementById('nextSlideBtn').innerHTML=slideIndex===slides.length-1?'<span>Take the Helm</span><span class="arrow">↗</span>':'<span>Continue</span><span class="arrow">→</span>';
-
- introTimer=setTimeout(()=>{
-   if(!document.getElementById('intro').classList.contains('active'))return;
-   if(slideIndex<slides.length-1){
-     slideIndex++;
-     renderSlide();
-   }else{
-     show('create');
-     document.getElementById('gm').focus({preventScroll:true});
-   }
- },INTRO_DURATION);
+stopIntro();
+const s=SLIDES[slideIndex],scene=document.getElementById('scene'),content=document.getElementById('introContent');
+scene.className='scene '+s.art;content.classList.remove('reveal');void content.offsetWidth;
+document.getElementById('ikicker').textContent=s.kicker;
+document.getElementById('ititle').innerHTML=s.title;
+document.getElementById('icopy').textContent=s.copy;
+content.classList.add('reveal');
+document.getElementById('progress').innerHTML=SLIDES.map((_,i)=>`<span class="${i<=slideIndex?'done':''}"></span>`).join('');
+document.getElementById('nextBtn').innerHTML=slideIndex===SLIDES.length-1?'<span>Take the Helm</span><span class="arrow">↗</span>':'<span>Continue</span><span class="arrow">→</span>';
+introTimer=setTimeout(()=>{if(!document.getElementById('intro').classList.contains('active'))return;if(slideIndex<SLIDES.length-1){slideIndex++;renderSlide()}else{show('create');document.getElementById('gm').focus({preventScroll:true})}},6500);
 }
-
-function nextSlide(){
- stopIntroTimer();
- if(slideIndex<slides.length-1){
-   slideIndex++;
-   renderSlide();
- }else{
-   show('create');
-   setTimeout(()=>document.getElementById('gm').focus({preventScroll:true}),250);
- }
-}
-
-function prevSlide(){
- stopIntroTimer();
- if(slideIndex>0){
-   slideIndex--;
-   renderSlide();
- }else show('home');
-}
-
-function skipIntro(){
- stopIntroTimer();
- show('create');
-}
+function nextSlide(){stopIntro();if(slideIndex<SLIDES.length-1){slideIndex++;renderSlide()}else{show('create');setTimeout(()=>document.getElementById('gm').focus({preventScroll:true}),200)}}
+function prevSlide(){stopIntro();if(slideIndex>0){slideIndex--;renderSlide()}else show('home')}
+function skipIntro(){stopIntro();show('create')}
 
 function createCareer(e){
- e.preventDefault();
- const gm=document.getElementById('gm').value.trim();
- const error=document.getElementById('formError');
- if(!gm){
-   error.classList.add('show');
-   document.getElementById('gm').focus();
-   return;
- }
- error.classList.remove('show');
- career={gm,team:document.getElementById('team').value,w:0,l:0,week:1};
- persist();
- renderCareer();
- show('dash');
+e.preventDefault();const gm=document.getElementById('gm').value.trim();if(!gm){document.getElementById('gm').focus();return}
+const teamName=document.getElementById('team').value,team=TEAMS.find(t=>t.name===teamName)||TEAMS[0];
+career={gm,team:team.name,week:1,results:[],teams:TEAMS.map(t=>({...t,w:0,l:0,pf:0,pa:0})),schedule:makeSchedule(team.name)};
+save();renderDash();show('dash');
+}
+function makeSchedule(userTeam){const others=TEAMS.map(t=>t.name).filter(n=>n!==userTeam);return shuffle(others).slice(0,7).map((opponent,i)=>({week:i+1,opponent,home:i%2===0,result:null,scoreFor:null,scoreAgainst:null,story:[]}))}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function save(){try{localStorage.setItem('f54',JSON.stringify(career))}catch(e){}}
+function teamData(name){return career.teams.find(t=>t.name===name)||TEAMS.find(t=>t.name===name)}
+function loadCareer(){if(!career){alert('No saved career yet. Start a new career first.');return}renderDash();show('dash')}
+function sortedTeams(){if(!career)return[];return [...career.teams].sort((a,b)=>b.w-a.w||(b.pf-b.pa)-(a.pf-a.pa)||b.pf-a.pf)}
+
+function renderDash(){
+if(!career)return;
+const user=teamData(career.team),wins=career.results.filter(r=>r.won).length,losses=career.results.length-wins;
+document.getElementById('teamTitle').textContent=career.team;
+document.getElementById('gmLabel').textContent='General Manager: '+career.gm;
+document.getElementById('record').textContent=wins+'–'+losses;
+document.getElementById('pf').textContent=career.results.reduce((s,r)=>s+r.scoreFor,0);
+document.getElementById('seasonLabel').textContent=career.results.length>=7?'SEASON COMPLETE':'YEAR 1 · WEEK '+career.week;
+const rank=sortedTeams().findIndex(t=>t.name===career.team)+1;
+document.getElementById('rank').textContent=rank+(rank===1?'st':rank===2?'nd':rank===3?'rd':'th');
+const next=career.schedule[career.results.length],button=document.getElementById('playButton');
+if(next){
+document.getElementById('nextGame').innerHTML=`<div class="recordrow"><div><div class="tag">WEEK ${next.week} · ${next.home?'HOME GAME':'AWAY GAME'}</div><div class="teamname">${next.home?career.team:next.opponent} <span class="muted">vs</span> ${next.home?next.opponent:career.team}</div></div><span class="badge">UP NEXT</span></div>`;
+document.getElementById('playLabel').textContent='Play Week '+next.week;button.disabled=false;
+}else{
+document.getElementById('nextGame').innerHTML='<div class="empty">Regular season complete. Review your final standings and results.</div>';
+document.getElementById('playLabel').textContent='Season Complete';button.disabled=true;
+}
+document.getElementById('teamProfile').textContent=user.style;
+document.getElementById('objective').textContent=career.results.length>=7?'Regular season complete. Review your final record and point differential.':'Win your next game and build momentum toward the top of the standings.';
+document.getElementById('gmReport').textContent=`${career.team} has ${wins} wins and ${losses} losses. Team ratings: offense ${user.off}, defense ${user.def}, quarterback ${user.qb}.`;
+renderRoster();
 }
 
-function persist(){
- try{localStorage.setItem('f54',JSON.stringify(career))}catch(e){}
+function simulateScore(attack,defense){
+const base=20+(attack.off-80)*.38+(attack.qb-80)*.24-(defense.def-80)*.27;
+const roll=()=>Math.round((Math.random()+Math.random()+Math.random()-1.5)*7);
+let score=Math.max(3,Math.round(base+roll()));
+if(Math.random()<.07)score+=7;
+return score;
 }
 
-function renderCareer(){
- if(!career)return;
- document.getElementById('teamName').textContent=career.team;
- document.getElementById('managerName').textContent='General Manager: '+career.gm;
- document.getElementById('record').textContent=career.w+'–'+career.l;
+function simulateGame(){
+const fixture=career.schedule[career.results.length];if(!fixture)return;
+const user=teamData(career.team),opp=teamData(fixture.opponent);
+let us=simulateScore(user,opp),them=simulateScore(opp,user);
+if(us===them){if(Math.random()<.5)us+=3;else them+=3}
+const won=us>them,margin=Math.abs(us-them);
+const story=[
+won?`${career.team} finish the game with more points than ${opp.name}.`:`${opp.name} outscore ${career.team}.`,
+`Offensive rating: ${user.off} vs ${opp.off}.`,
+`Quarterback rating: ${user.qb} vs ${opp.qb}.`,
+`Defensive rating: ${user.def} vs ${opp.def}.`,
+margin>=21?'A dominant performance creates real momentum.':margin>=14?'The margin grows in the second half.':margin<=3?'The result comes down to the final possessions.':'A balanced game is decided by a few key drives.'
+];
+fixture.result=won?'W':'L';fixture.scoreFor=us;fixture.scoreAgainst=them;fixture.story=story;
+career.results.push({week:fixture.week,opponent:fixture.opponent,home:fixture.home,scoreFor:us,scoreAgainst:them,won});
+const ut=teamData(career.team),ot=teamData(fixture.opponent);
+ut.pf+=us;ut.pa+=them;ot.pf+=them;ot.pa+=us;
+if(won){ut.w++;ot.l++}else{ut.l++;ot.w++}
+career.week=career.results.length+1;save();renderDash();renderGame(fixture,us,them,won);show('game');
+}
+function playNextGame(){if(!career)return;if(career.results.length>=7){alert('The regular season is complete. Check the standings and schedule.');return}simulateGame()}
+
+function renderGame(fixture,us,them,won){
+document.getElementById('gameWeek').textContent='WEEK '+fixture.week;
+document.getElementById('homeTeam').innerHTML=(fixture.home?career.team:fixture.opponent).toUpperCase()+'<small>'+(fixture.home?'HOME':'AWAY')+'</small>';
+document.getElementById('awayTeam').innerHTML=(fixture.home?fixture.opponent:career.team).toUpperCase()+'<small>'+(fixture.home?'AWAY':'HOME')+'</small>';
+document.getElementById('finalScore').textContent=us+' : '+them;
+document.getElementById('gameResult').textContent=won?'VICTORY · '+career.team.toUpperCase():'DEFEAT · '+fixture.opponent.toUpperCase();
+document.getElementById('gameResult').className='eyebrow '+(won?'win':'loss');
+document.getElementById('gameStory').innerHTML=fixture.story.map((s,i)=>`<div class="timeline"><span class="tag">${String(i+1).padStart(2,'0')} / </span>${s}</div>`).join('');
 }
 
-function loadCareer(){
- if(!career){alert('No saved career yet. Start a new career first.');return}
- renderCareer();
- show('dash');
+function showSchedule(){
+document.getElementById('scheduleList').innerHTML=career.schedule.map((g,i)=>{
+const done=i<career.results.length,matchup=`${g.home?career.team:g.opponent} vs ${g.home?g.opponent:career.team}`;
+return `<div class="game-row"><div class="tag">WEEK ${g.week}</div><div><div class="teamname">${matchup}</div><div class="tag">${g.home?'HOME':'AWAY'}</div></div><div style="text-align:right">${done?`<div class="score ${g.result==='W'?'win':'loss'}">${g.scoreFor}–${g.scoreAgainst}</div><div class="tag">${g.result==='W'?'WIN':'LOSS'}</div>`:'<span class="badge">UPCOMING</span>'}</div></div>`;
+}).join('');
+show('schedule');
 }
 
-function playWeek(){
- if(!career)return;
- const won=Math.random()<.56;
- if(won)career.w++;else career.l++;
- career.week=(career.week||1)+1;
- persist();
- renderCareer();
- alert(won?'VICTORY. Your franchise takes the win.':'TOUGH LOSS. Review the roster and regroup for next week.');
+function showStandings(){
+const rows=sortedTeams();
+document.getElementById('standingsList').innerHTML='<div class="standing-row header"><span>#</span><span>FRANCHISE</span><span>W</span><span>L</span><span>DIFF</span></div>'+rows.map((t,i)=>`<div class="standing-row"><span>${i+1}</span><span class="teamname">${t.name}${t.name===career.team?' ★':''}</span><span>${t.w}</span><span>${t.l}</span><span class="${t.pf-t.pa>=0?'win':'loss'}">${t.pf-t.pa>0?'+':''}${t.pf-t.pa}</span></div>`).join('');
+show('standings');
 }
 
-function backFromSettings(){show(career?'dash':'home')}
-function replayIntro(){startCareer()}
-if(career)renderCareer();
+function renderRoster(){
+if(!career)return;
+const t=teamData(career.team),players=[['Starting QB','QB',t.qb],['Offensive Unit','OFF',t.off],['Defensive Unit','DEF',t.def],['Special Teams','ST',Math.round((t.off+t.def)/2)]];
+document.getElementById('rosterList').innerHTML=players.map(p=>`<div class="player"><div><strong>${p[0]}</strong><small>${p[1]} · Team rating</small></div><span class="ovr">${p[2]}</span></div>`).join('');
+}
+
+if(career){
+if(!career.teams||!career.schedule||!career.results){career=null;try{localStorage.removeItem('f54')}catch(e){}}
+else renderDash();
+}
 </script>
 </body>
 </html>
